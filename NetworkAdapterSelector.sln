@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkAdapterSelector.Hook", "NetworkAdapterSelector.Hook\NetworkAdapterSelector.Hook.csproj", "{DA87AB72-4183-4D28-ABD9-97B898AF780A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8C8BFF1F-D54F-474B-8652-17A44046998A} = {8C8BFF1F-D54F-474B-8652-17A44046998A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkAdapterSelector.ShellExtension", "NetworkAdapterSelector.ShellExtension\NetworkAdapterSelector.ShellExtension.csproj", "{FBC0EA17-BB03-426B-864B-A0289CB00609}"
 EndProject

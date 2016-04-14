@@ -1901,7 +1901,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>license</td><td>ISX_DEFAULTCOMPONENT1</td><td>LICENSE</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Personal\Visual Studio\Visual Studio 2015\Projects\NetworkAdapterSelector\LICENSE</td><td>1</td><td/></row>
+		<row><td>license</td><td>ISX_DEFAULTCOMPONENT1</td><td>LICENSE</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISProjectFolder&gt;\..\LICENSE</td><td>1</td><td/></row>
 		<row><td>networkadapterselector.hook.</td><td>NetworkAdapterSelector.Hook.Primary_output</td><td>NetworkAdapterSelector.Hook.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.Hook&gt;|Built</td><td>3</td><td/></row>
 		<row><td>networkadapterselector.hook.1</td><td>NetworkAdapterSelector.Hook.Content_Files</td><td>NetworkAdapterSelector.Hook.Content Files</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.Hook&gt;|ContentFiles</td><td>3</td><td/></row>
 		<row><td>networkadapterselector.shell</td><td>NetworkAdapterSelector.ShellExtension.Primary_output</td><td>NetworkAdapterSelector.ShellExtension.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.ShellExtension&gt;|Built</td><td>3</td><td/></row>
@@ -3939,7 +3939,7 @@
 		<row><td>RegisterMIMEInfo</td><td/><td>4900</td><td>RegisterMIMEInfo</td><td/></row>
 		<row><td>RegisterProduct</td><td/><td>6100</td><td>RegisterProduct</td><td/></row>
 		<row><td>RegisterProgIdInfo</td><td/><td>4800</td><td>RegisterProgIdInfo</td><td/></row>
-		<row><td>RegisterShellExtension</td><td>Not Installed</td><td>6402</td><td/><td/></row>
+		<row><td>RegisterShellExtension</td><td>Installed</td><td>6602</td><td/><td/></row>
 		<row><td>RegisterTypeLibraries</td><td/><td>5500</td><td>RegisterTypeLibraries</td><td/></row>
 		<row><td>RegisterUser</td><td/><td>6000</td><td>RegisterUser</td><td/></row>
 		<row><td>RemoveDuplicateFiles</td><td/><td>3400</td><td>RemoveDuplicateFiles</td><td/></row>
@@ -3969,7 +3969,7 @@
 		<row><td>UnregisterFonts</td><td/><td>2500</td><td>UnregisterFonts</td><td/></row>
 		<row><td>UnregisterMIMEInfo</td><td/><td>3000</td><td>UnregisterMIMEInfo</td><td/></row>
 		<row><td>UnregisterProgIdInfo</td><td/><td>2900</td><td>UnregisterProgIdInfo</td><td/></row>
-		<row><td>UnregisterShellExtension</td><td>REMOVE="ALL"</td><td>6401</td><td/><td/></row>
+		<row><td>UnregisterShellExtension</td><td>REMOVE~="ALL"</td><td>1499</td><td/><td/></row>
 		<row><td>UnregisterTypeLibraries</td><td/><td>2300</td><td>UnregisterTypeLibraries</td><td/></row>
 		<row><td>ValidateProductID</td><td/><td>700</td><td>ValidateProductID</td><td/></row>
 		<row><td>WriteEnvironmentStrings</td><td/><td>5200</td><td>WriteEnvironmentStrings</td><td/></row>
@@ -4312,6 +4312,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ARPHELPLINK</td><td>##ID_STRING5##</td><td/></row>
 		<row><td>ARPINSTALLLOCATION</td><td/><td/></row>
 		<row><td>ARPNOMODIFY</td><td>1</td><td/></row>
+		<row><td>ARPNOREPAIR</td><td>1</td><td/></row>
 		<row><td>ARPPRODUCTICON</td><td>ARPPRODUCTICON.exe</td><td/></row>
 		<row><td>ARPREADME</td><td>[INSTALLDIR]LICENSE</td><td/></row>
 		<row><td>ARPSIZE</td><td/><td/></row>
@@ -4382,7 +4383,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]NetworkAdapterSelector.ShellExtension.Primary output</td><td/></row>
-		<row><td>ProductCode</td><td>{2382E198-6B14-42F7-B63C-89301E5F5EBB}</td><td/></row>
+		<row><td>ProductCode</td><td>{2382E198-6B14-42F7-B63C-89301E5F5EBC}</td><td/></row>
 		<row><td>ProductName</td><td>Network Adapter Selector</td><td/></row>
 		<row><td>ProductVersion</td><td>1.0.0.0</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
