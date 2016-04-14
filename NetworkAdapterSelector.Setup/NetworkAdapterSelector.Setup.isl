@@ -1901,7 +1901,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>license</td><td>ISX_DEFAULTCOMPONENT1</td><td>LICENSE</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Personal\Visual Studio\Visual Studio 2015\Projects\NetworkAdapterSelector\LICENSE</td><td>1</td><td/></row>
+		<row><td>license</td><td>ISX_DEFAULTCOMPONENT1</td><td>LICENSE</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISProjectFolder&gt;\..\LICENSE</td><td>1</td><td/></row>
 		<row><td>networkadapterselector.hook.</td><td>NetworkAdapterSelector.Hook.Primary_output</td><td>NetworkAdapterSelector.Hook.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.Hook&gt;|Built</td><td>3</td><td/></row>
 		<row><td>networkadapterselector.hook.1</td><td>NetworkAdapterSelector.Hook.Content_Files</td><td>NetworkAdapterSelector.Hook.Content Files</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.Hook&gt;|ContentFiles</td><td>3</td><td/></row>
 		<row><td>networkadapterselector.shell</td><td>NetworkAdapterSelector.ShellExtension.Primary_output</td><td>NetworkAdapterSelector.ShellExtension.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.ShellExtension&gt;|Built</td><td>3</td><td/></row>
