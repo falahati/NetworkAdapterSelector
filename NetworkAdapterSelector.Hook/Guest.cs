@@ -289,7 +289,7 @@ namespace NetworkAdapterSelector.Hook
                     () =>
                     {
                         RemoteHooking.Inject(processId, _injectionAddress, _injectionAddress, _adapterId,
-                            _injectionAddress, _injectionDelay, true);
+                            _injectionAddress, _injectionDelay, _isDebug);
                     });
             }).Start();
             return res;
