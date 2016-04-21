@@ -1,5 +1,6 @@
 # Network Adapter Selector
 A solution containing an Injector to hook WinSock methods and bind the new connections to the specific network adapter along with a Shell Extension to simplifies the process of injecting the code into other programs.
+![Screenshot](/screenshot.jpg?raw=true "Screenshot")
 
 ## Download
 Download the latest version of the program from the [releases](https://github.com/falahati/NetworkAdapterSelector/releases/latest) page.
