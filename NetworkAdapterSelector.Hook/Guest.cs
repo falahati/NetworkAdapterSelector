@@ -171,7 +171,7 @@ namespace NetworkAdapterSelector.Hook
         {
             try
             {
-                var localHook = LocalHook.Create(LocalHook.GetProcAddress(libName, entryPoint), inNewProc, this);
+                var localHook = LocalHook.Create(LocalHook.GetProcAddress(libName, entryPoint), inNewProc, null);
                 // Exclude current thread (EasyHook)
                 localHook.ThreadACL.SetExclusiveACL(new[] {0});
                 lock (_hooks)
