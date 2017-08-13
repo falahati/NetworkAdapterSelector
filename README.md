@@ -8,7 +8,7 @@ Download the latest version of the program from the [releases](https://github.co
 ## Command Line Parameters
 If you are not interested in using the provided shell extension, you can always use the following command line parameters directly to manipulate running applications or start a new process.
 
-- `-d `--debug`: Debug mode creates a log file in temp directory logging all activities of the injected code. [true, false]
+- `-d` `--debug`: Debug mode creates a log file in temp directory logging all activities of the injected code. [true, false]
 - `-n` `--network`: Identification string of the network adapter to bind.
 - `-a` `--attach`: Process identification number of the process to attach. **OR**
 - `-e` `--execute`: Address of the executable file to start.
