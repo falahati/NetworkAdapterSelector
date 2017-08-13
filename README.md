@@ -17,7 +17,7 @@ If you are not interested in using the provided shell extension, you can always 
 
 #### Network Identification String
 Network identification string is the network GUID in `{00000000-0000-0000-0000-000000000000}` format, all uppercase. To get those you can run the following commands in the CMD to start the "Wired AutoConfig" and "WLAN AutoConfig" services and list network adapters:
-```
+```Shell
 net start "Wired AutoConfig"
 net start "WLAN AutoConfig"
 netsh lan show interfaces
@@ -25,7 +25,7 @@ netsh wlan show interfaces
 ```
 
 Or use the following code in a PowerShell window that uses .Net libraries to produce a similar result:
-```
+```Shell
 [System.Net.NetworkInformation.NetworkInterface]::GetAllNetworkInterfaces()
 ```
 
@@ -36,12 +36,12 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\NetworkCards
 
 #### Examples
 Attaching to an already running process: (PID `1234`)
-```
+```Shell
 NetworkAdapterSelector.Hook.exe --network "{ABCDEFGH-0000-0000-0000-000000000000}" --attach 1234
 ```
 
 Starting a new instance of `notepad.exe` and attaching to it after one second:
-```
+```Shell
 NetworkAdapterSelector.Hook.exe --network "{ABCDEFGH-0000-0000-0000-000000000000}" --execute "C:\Windows\System32\notepad.exe" --delay 1000
 ```
 
