@@ -13,12 +13,6 @@ namespace NetworkAdapterSelector.Hook
     {
         private static void Main()
         {
-            //"{E983B5E1-72B8-48E8-9C2C-C223A66FF376}";
-            //@"C:\Program Files (x86)\PeaRoxy\PeaRoxy.Windows.WPFClient.exe"
-            //@"C:\Users\s_fal\Documents\Visual Studio 2015\Projects\WSTests\WSTests\bin\x86\Release\WSTests.exe"
-            //@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-            //@"C:\Program Files (x86)\Mozilla Firefox\firefox.exe" "-P \"1\" -no-remote"
-
             try
             {
                 var processId = CommandLineOptions.Default.Attach;
