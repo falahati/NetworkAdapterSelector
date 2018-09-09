@@ -56,7 +56,7 @@
 		<author>##ID_STRING3##</author>
 		<keywords>Installer,MSI,Database</keywords>
 		<comments>##ID_STRING4##</comments>
-		<template>Intel;1033</template>
+		<template>x64;1033</template>
 		<lastauthor>Administrator</lastauthor>
 		<revnumber>{E3FB950E-D5E2-4BC3-8451-9F5A7F4504F7}</revnumber>
 		<lastprinted/>
@@ -65,7 +65,7 @@
 		<pagecount>200</pagecount>
 		<wordcount>0</wordcount>
 		<charcount/>
-		<appname>InstallShield Express</appname>
+		<appname>InstallShield</appname>
 		<security>1</security>
 	</summary>
 	
@@ -265,6 +265,7 @@
 		<row><td>NewBinary18</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\InstallStateMenu.ico</td></row>
 		<row><td>NewBinary19</td><td/><td>&lt;ISProductFolder&gt;\redist\Language independent\i386\SerialNumCAHelper.dll</td></row>
 		<row><td>NewBinary2</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\New.ibd</td></row>
+		<row><td>NewBinary20</td><td/><td>&lt;PATH_TO_RELEASE_FILES1&gt;\srm.exe</td></row>
 		<row><td>NewBinary3</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\Up.ibd</td></row>
 		<row><td>NewBinary4</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\WarningIcon.ibd</td></row>
 		<row><td>NewBinary5</td><td/><td>&lt;ISProductFolder&gt;\Support\Themes\InstallShield Blue Theme\welcome.jpg</td></row>
@@ -340,12 +341,21 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{D3F225B9-6105-4A24-ABE9-31ED7F0DEC52}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{3E4F2E09-6467-4803-9FA0-41D1E383875D}</td><td>INSTALLDIR</td><td>258</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NetworkAdapterSelector.Hook.Content_Files</td><td>{A27AF67E-8994-4CE6-B64D-7D68B4CDC3CC}</td><td>INSTALLDIR</td><td>2</td><td/><td>networkadapterselector.hook.1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NetworkAdapterSelector.Hook.Primary_output</td><td>{5B8091B3-DEFE-404C-AAD6-56C7C862B5C0}</td><td>INSTALLDIR</td><td>2</td><td/><td>networkadapterselector.hook.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NetworkAdapterSelector.ShellExtension.Content_Files</td><td>{2B2A5C17-ED97-47AE-8261-228C86114762}</td><td>INSTALLDIR</td><td>2</td><td/><td>networkadapterselector.shell1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>NetworkAdapterSelector.ShellExtension.Primary_output</td><td>{D0BA38EF-A0DC-4F0E-8CF3-8F5CC133F2B5}</td><td>INSTALLDIR</td><td>2</td><td/><td>networkadapterselector.shell</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>AllOtherFiles</td><td>{20BCCDF3-D498-40A5-9ABE-3A8434EDD07C}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CommandLine.dll</td><td>{4F885C25-E935-4BC6-ACB5-4B2E482ED124}</td><td>INSTALLDIR</td><td>8</td><td/><td>commandline.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EasyHook.dll</td><td>{3EED72DA-05C2-4C88-BB3E-13BB97FFF5AB}</td><td>INSTALLDIR</td><td>8</td><td/><td>easyhook.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EasyHook32.dll</td><td>{E997A00D-6008-4B71-AD4B-8D52ACA4B32E}</td><td>INSTALLDIR</td><td>8</td><td/><td>easyhook32.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EasyHook32Svc.exe</td><td>{FFDBAC28-3BB5-4FA1-97A9-3D457F90A479}</td><td>INSTALLDIR</td><td>8</td><td/><td>easyhook32svc.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EasyHook64.dll</td><td>{C7E76774-7B9B-4CAE-88F3-CC0541838F65}</td><td>INSTALLDIR</td><td>8</td><td/><td>easyhook64.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EasyHook64Svc.exe</td><td>{14696C4B-9A3E-4720-BEFA-6580D35EC881}</td><td>INSTALLDIR</td><td>8</td><td/><td>easyhook64svc.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EasyLoad32.dll</td><td>{C20E4038-7E82-464E-B5F8-ADC2F41BF2EB}</td><td>INSTALLDIR</td><td>8</td><td/><td>easyload32.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EasyLoad64.dll</td><td>{D8607B6A-E7F8-4A16-A57D-F785A4A2C8CC}</td><td>INSTALLDIR</td><td>8</td><td/><td>easyload64.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISRegistryComponent_x64</td><td>{3E4F2E09-6467-4803-9FA0-41D1E383875D}</td><td>INSTALLDIR</td><td>264</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISRegistryComponent_x86</td><td>{D3F225B9-6105-4A24-ABE9-31ED7F0DEC52}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NetworkAdapterSelector.Hook.exe</td><td>{A44F73EE-E83A-4314-B31F-1558A982C1AE}</td><td>INSTALLDIR</td><td>8</td><td/><td>networkadapterselector.hook.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>NetworkAdapterSelector.ShellExtension.dll</td><td>{3308856B-2A3B-400D-A572-19A2E16E058F}</td><td>INSTALLDIR</td><td>8</td><td/><td>networkadapterselector.shell</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SharpShell.dll</td><td>{92EC2490-677F-4B17-80F5-DE44F4E1108D}</td><td>INSTALLDIR</td><td>8</td><td/><td>sharpshell.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>srm.exe</td><td>{50D881A7-8160-4E2D-B7AC-F05D43D4BBBA}</td><td>INSTALLDIR</td><td>8</td><td/><td>srm.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -558,23 +568,6 @@
 		<row><td>LicenseAgreement</td><td>ISPrintButton</td><td>PushButton</td><td>301</td><td>188</td><td>65</td><td>17</td><td>3</td><td/><td>##IDS_PRINT_BUTTON##</td><td>Agree</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>LicenseAgreement</td><td>Memo</td><td>ScrollableText</td><td>8</td><td>55</td><td>358</td><td>130</td><td>7</td><td/><td/><td/><td/><td>0</td><td/><td>&lt;ISProductFolder&gt;\Redist\0409\Eula.rtf</td><td/></row>
 		<row><td>LicenseAgreement</td><td>Next</td><td>PushButton</td><td>230</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_NEXT##</td><td>Cancel</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_BACK##</td><td>Next</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary1</td></row>
-		<row><td>MaintenanceType</td><td>BannerLine</td><td>Line</td><td>0</td><td>44</td><td>374</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Branding1</td><td>Text</td><td>4</td><td>229</td><td>50</td><td>13</td><td>3</td><td/><td>##IDS_INSTALLSHIELD_FORMATTED##</td><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Branding2</td><td>Text</td><td>3</td><td>228</td><td>50</td><td>13</td><td>65537</td><td/><td>##IDS_INSTALLSHIELD##</td><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Cancel</td><td>PushButton</td><td>301</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_CANCEL##</td><td>RadioGroup</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>DlgDesc</td><td>Text</td><td>21</td><td>23</td><td>292</td><td>25</td><td>65539</td><td/><td>##IDS__IsMaintenanceDlg_MaitenanceOptions##</td><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>DlgLine</td><td>Line</td><td>48</td><td>234</td><td>326</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>DlgTitle</td><td>Text</td><td>13</td><td>6</td><td>292</td><td>25</td><td>65539</td><td/><td>##IDS__IsMaintenanceDlg_ProgramMaintenance##</td><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Ico1</td><td>Icon</td><td>35</td><td>75</td><td>24</td><td>24</td><td>5242881</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary6</td></row>
-		<row><td>MaintenanceType</td><td>Ico2</td><td>Icon</td><td>35</td><td>135</td><td>24</td><td>24</td><td>5242881</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary7</td></row>
-		<row><td>MaintenanceType</td><td>Ico3</td><td>Icon</td><td>35</td><td>195</td><td>24</td><td>24</td><td>5242881</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary8</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>PushButton</td><td>230</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_NEXT##</td><td>Cancel</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>RadioGroup</td><td>RadioButtonGroup</td><td>21</td><td>55</td><td>290</td><td>170</td><td>3</td><td>_IsMaintenance</td><td/><td>Back</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Text1</td><td>Text</td><td>80</td><td>72</td><td>260</td><td>35</td><td>3</td><td/><td>##IDS__IsMaintenanceDlg_ChangeFeatures##</td><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Text2</td><td>Text</td><td>80</td><td>135</td><td>260</td><td>35</td><td>3</td><td/><td>##IDS__IsMaintenanceDlg_RepairMessage##</td><td/><td/><td>0</td><td/><td/><td/></row>
-		<row><td>MaintenanceType</td><td>Text3</td><td>Text</td><td>80</td><td>192</td><td>260</td><td>35</td><td>131075</td><td/><td>##IDS__IsMaintenanceDlg_RemoveProductName##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>MaintenanceWelcome</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>1</td><td/><td>##IDS_BACK##</td><td>Next</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>MaintenanceWelcome</td><td>Cancel</td><td>PushButton</td><td>301</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_CANCEL##</td><td>Back</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>MaintenanceWelcome</td><td>DlgLine</td><td>Line</td><td>0</td><td>234</td><td>374</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
@@ -905,7 +898,7 @@
 		<row><td>CancelSetup</td><td>Yes</td><td>DoAction</td><td>CleanUp</td><td>ISSCRIPTRUNNING="1"</td><td>1</td></row>
 		<row><td>CancelSetup</td><td>Yes</td><td>EndDialog</td><td>Exit</td><td>1</td><td>2</td></row>
 		<row><td>CustomSetup</td><td>Back</td><td>NewDialog</td><td>CustomerInformation</td><td>NOT Installed</td><td>0</td></row>
-		<row><td>CustomSetup</td><td>Back</td><td>NewDialog</td><td>MaintenanceType</td><td>Installed</td><td>0</td></row>
+		<row><td>CustomSetup</td><td>Back</td><td>NewDialog</td><td>NoDialog</td><td>Installed</td><td>0</td></row>
 		<row><td>CustomSetup</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>CustomSetup</td><td>ChangeFolder</td><td>SelectionBrowse</td><td>InstallChangeFolder</td><td>1</td><td>0</td></row>
 		<row><td>CustomSetup</td><td>Details</td><td>SelectionBrowse</td><td>DiskSpaceRequirements</td><td>1</td><td>1</td></row>
@@ -947,23 +940,8 @@
 		<row><td>LicenseAgreement</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>LicenseAgreement</td><td>ISPrintButton</td><td>DoAction</td><td>ISPrint</td><td>1</td><td>0</td></row>
 		<row><td>LicenseAgreement</td><td>Next</td><td>NewDialog</td><td>DestinationFolder</td><td>AgreeToLicense = "Yes"</td><td>0</td></row>
-		<row><td>MaintenanceType</td><td>Back</td><td>NewDialog</td><td>MaintenanceWelcome</td><td>1</td><td>0</td></row>
-		<row><td>MaintenanceType</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>NewDialog</td><td>CustomSetup</td><td>_IsMaintenance = "Change"</td><td>12</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>NewDialog</td><td>ReadyToInstall</td><td>_IsMaintenance = "Reinstall"</td><td>13</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>NewDialog</td><td>ReadyToRemove</td><td>_IsMaintenance = "Remove"</td><td>11</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>Reinstall</td><td>ALL</td><td>_IsMaintenance = "Reinstall"</td><td>10</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>ReinstallMode</td><td>[ReinstallModeText]</td><td>_IsMaintenance = "Reinstall"</td><td>9</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>[ProgressType0]</td><td>Modify</td><td>_IsMaintenance = "Change"</td><td>2</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>[ProgressType0]</td><td>Repair</td><td>_IsMaintenance = "Reinstall"</td><td>1</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>[ProgressType1]</td><td>Modifying</td><td>_IsMaintenance = "Change"</td><td>3</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>[ProgressType1]</td><td>Repairing</td><td>_IsMaintenance = "Reinstall"</td><td>4</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>[ProgressType2]</td><td>modified</td><td>_IsMaintenance = "Change"</td><td>6</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>[ProgressType2]</td><td>repairs</td><td>_IsMaintenance = "Reinstall"</td><td>5</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>[ProgressType3]</td><td>modifies</td><td>_IsMaintenance = "Change"</td><td>7</td></row>
-		<row><td>MaintenanceType</td><td>Next</td><td>[ProgressType3]</td><td>repairs</td><td>_IsMaintenance = "Reinstall"</td><td>8</td></row>
 		<row><td>MaintenanceWelcome</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
-		<row><td>MaintenanceWelcome</td><td>Next</td><td>NewDialog</td><td>MaintenanceType</td><td>1</td><td>0</td></row>
+		<row><td>MaintenanceWelcome</td><td>Next</td><td>NewDialog</td><td>ReadyToRemove</td><td>1</td><td>0</td></row>
 		<row><td>MsiRMFilesInUse</td><td>Cancel</td><td>EndDialog</td><td>Exit</td><td>1</td><td>1</td></row>
 		<row><td>MsiRMFilesInUse</td><td>OK</td><td>EndDialog</td><td>Return</td><td>1</td><td>1</td></row>
 		<row><td>MsiRMFilesInUse</td><td>OK</td><td>RMShutdownAndRestart</td><td>0</td><td>RestartManagerOption="CloseRestart"</td><td>2</td></row>
@@ -978,7 +956,7 @@
 		<row><td>ReadmeInformation</td><td>Next</td><td>NewDialog</td><td>DestinationFolder</td><td>1</td><td>1</td></row>
 		<row><td>ReadyToInstall</td><td>Back</td><td>NewDialog</td><td>CustomSetup</td><td>Installed OR _IsSetupTypeMin = "Custom"</td><td>2</td></row>
 		<row><td>ReadyToInstall</td><td>Back</td><td>NewDialog</td><td>DestinationFolder</td><td>NOT Installed</td><td>1</td></row>
-		<row><td>ReadyToInstall</td><td>Back</td><td>NewDialog</td><td>MaintenanceType</td><td>Installed AND _IsMaintenance = "Reinstall"</td><td>3</td></row>
+		<row><td>ReadyToInstall</td><td>Back</td><td>NewDialog</td><td>NoDialog</td><td>Installed AND _IsMaintenance = "Reinstall"</td><td>3</td></row>
 		<row><td>ReadyToInstall</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>ReadyToInstall</td><td>InstallNow</td><td>EndDialog</td><td>Return</td><td>OutOfNoRbDiskSpace &lt;&gt; 1</td><td>0</td></row>
 		<row><td>ReadyToInstall</td><td>InstallNow</td><td>NewDialog</td><td>OutOfSpace</td><td>OutOfNoRbDiskSpace = 1</td><td>0</td></row>
@@ -999,7 +977,7 @@
 		<row><td>ReadyToInstall</td><td>InstallPerUser</td><td>[ProgressType1]</td><td>Installing</td><td>1</td><td>0</td></row>
 		<row><td>ReadyToInstall</td><td>InstallPerUser</td><td>[ProgressType2]</td><td>installed</td><td>1</td><td>0</td></row>
 		<row><td>ReadyToInstall</td><td>InstallPerUser</td><td>[ProgressType3]</td><td>installs</td><td>1</td><td>0</td></row>
-		<row><td>ReadyToRemove</td><td>Back</td><td>NewDialog</td><td>MaintenanceType</td><td>1</td><td>0</td></row>
+		<row><td>ReadyToRemove</td><td>Back</td><td>NewDialog</td><td>MaintenanceWelcome</td><td>1</td><td>0</td></row>
 		<row><td>ReadyToRemove</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>ReadyToRemove</td><td>RemoveNow</td><td>EndDialog</td><td>Return</td><td>OutOfNoRbDiskSpace &lt;&gt; 1</td><td>2</td></row>
 		<row><td>ReadyToRemove</td><td>RemoveNow</td><td>NewDialog</td><td>OutOfSpace</td><td>OutOfNoRbDiskSpace = 1</td><td>2</td></row>
@@ -1055,12 +1033,9 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
-		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
-		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT2</td></row>
-		<row><td>INSTALLDIR</td><td>NetworkAdapterSelector.Hook.Content_Files</td></row>
-		<row><td>INSTALLDIR</td><td>NetworkAdapterSelector.Hook.Primary_output</td></row>
-		<row><td>INSTALLDIR</td><td>NetworkAdapterSelector.ShellExtension.Content_Files</td></row>
-		<row><td>INSTALLDIR</td><td>NetworkAdapterSelector.ShellExtension.Primary_output</td></row>
+		<row><td>INSTALLDIR</td><td>AllOtherFiles</td></row>
+		<row><td>INSTALLDIR</td><td>ISRegistryComponent_x64</td></row>
+		<row><td>INSTALLDIR</td><td>ISRegistryComponent_x86</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1077,13 +1052,14 @@
 		<row><td>ISSelfRegisterFinalize</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFinalize</td><td/><td/></row>
 		<row><td>ISUnSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISUnSelfRegisterFiles</td><td/><td/></row>
 		<row><td>LaunchProgramFileFromSetupCompleteSuccess</td><td>1</td><td>NewBinary19</td><td>LaunchProgram</td><td/><td/></row>
-		<row><td>RegisterShellExtension</td><td>1058</td><td>INSTALLDIR</td><td>[INSTALLDIR]srm.exe install "[INSTALLDIR]NetworkAdapterSelector.ShellExtension.dll" -codebase</td><td/><td/></row>
+		<row><td>RegisterShellExtension</td><td>1042</td><td>srm.exe</td><td>install "[INSTALLDIR]NetworkAdapterSelector.ShellExtension.dll" -codebase</td><td>0</td><td/></row>
 		<row><td>SetARPINSTALLLOCATION</td><td>51</td><td>ARPINSTALLLOCATION</td><td>[INSTALLDIR]</td><td/><td/></row>
 		<row><td>SetARPReadme</td><td>51</td><td>ARPREADME</td><td>[INSTALLDIR]LICENSE</td><td/><td/></row>
 		<row><td>SetAllUsersProfileNT</td><td>51</td><td>ALLUSERSPROFILE</td><td>[%SystemRoot]\Profiles\All Users</td><td/><td/></row>
 		<row><td>ShowMsiLog</td><td>226</td><td>SystemFolder</td><td>[SystemFolder]notepad.exe "[MsiLogFileLocation]"</td><td/><td>Shows Property-driven MSI Log</td></row>
-		<row><td>UnregisterShellExtension</td><td>1058</td><td>INSTALLDIR</td><td>[INSTALLDIR]srm.exe uninstall "[INSTALLDIR]NetworkAdapterSelector.ShellExtension.dll" -codebase</td><td/><td/></row>
+		<row><td>UnregisterShellExtension</td><td>1090</td><td>NewBinary20</td><td>uninstall "[INSTALLDIR]NetworkAdapterSelector.ShellExtension.dll" -codebase</td><td>0</td><td/></row>
 		<row><td>setAllUsersProfile2K</td><td>51</td><td>ALLUSERSPROFILE</td><td>[%ALLUSERSPROFILE]</td><td/><td/></row>
+		<row><td>setPublicProfileVista</td><td>51</td><td>PUBLIC</td><td>[%PUBLIC]</td><td/><td/></row>
 		<row><td>setUserProfileNT</td><td>51</td><td>USERPROFILE</td><td>[%USERPROFILE]</td><td/><td/></row>
 	</table>
 
@@ -1116,7 +1092,6 @@
 		<row><td>InstallChangeFolder</td><td>50</td><td>50</td><td>374</td><td>266</td><td>3</td><td>##IDS_PRODUCTNAME_INSTALLSHIELD##</td><td>Tail</td><td>OK</td><td>Cancel</td><td>Browse</td><td/><td>0</td><td/></row>
 		<row><td>InstallWelcome</td><td>50</td><td>50</td><td>374</td><td>266</td><td>3</td><td>##IDS_PRODUCTNAME_INSTALLSHIELD##</td><td>Next</td><td>Next</td><td>Cancel</td><td>Welcome Panel</td><td/><td>0</td><td/></row>
 		<row><td>LicenseAgreement</td><td>50</td><td>50</td><td>374</td><td>266</td><td>2</td><td>##IDS_PRODUCTNAME_INSTALLSHIELD##</td><td>Agree</td><td>Next</td><td>Cancel</td><td>License Agreement</td><td/><td>0</td><td/></row>
-		<row><td>MaintenanceType</td><td>50</td><td>50</td><td>374</td><td>266</td><td>3</td><td>##IDS_PRODUCTNAME_INSTALLSHIELD##</td><td>RadioGroup</td><td>Next</td><td>Cancel</td><td>Change, Reinstall, Remove</td><td/><td>0</td><td/></row>
 		<row><td>MaintenanceWelcome</td><td>50</td><td>50</td><td>374</td><td>266</td><td>3</td><td>##IDS_PRODUCTNAME_INSTALLSHIELD##</td><td>Next</td><td>Next</td><td>Cancel</td><td>Maintenance Welcome</td><td/><td>0</td><td/></row>
 		<row><td>MsiRMFilesInUse</td><td>50</td><td>50</td><td>374</td><td>266</td><td>19</td><td>##IDS_PRODUCTNAME_INSTALLSHIELD##</td><td>OK</td><td>OK</td><td>Cancel</td><td>RestartManager Files in Use</td><td/><td>0</td><td/></row>
 		<row><td>OutOfSpace</td><td>50</td><td>50</td><td>374</td><td>266</td><td>3</td><td>##IDS_PRODUCTNAME_INSTALLSHIELD##</td><td>Resume</td><td>Resume</td><td>Resume</td><td>Out Of Disk Space</td><td/><td>0</td><td/></row>
@@ -1169,6 +1144,7 @@
 		<row><td>NEW_DIRECTORY4</td><td>TARGETDIR</td><td>NEW_DIRECTORY4</td><td/><td>0</td><td/></row>
 		<row><td>NEW_DIRECTORY5</td><td>TARGETDIR</td><td>NEW_DIRECTORY5</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
+		<row><td>PUBLIC</td><td>TARGETDIR</td><td>.:PUBLIC~1|Public</td><td/><td>0</td><td/></row>
 		<row><td>PersonalFolder</td><td>TARGETDIR</td><td>.:Personal</td><td/><td>0</td><td/></row>
 		<row><td>PrimaryVolumePath</td><td>TARGETDIR</td><td>.:Primar~1|PrimaryVolumePath</td><td/><td>0</td><td/></row>
 		<row><td>PrintHoodFolder</td><td>TARGETDIR</td><td>.:PRINTH~1|PrintHood</td><td/><td>0</td><td/></row>
@@ -1875,18 +1851,27 @@
 		<col def="S255">ISComments</col>
 		<col def="S255">ISFeatureCabName</col>
 		<col def="S255">ISProFeatureName</col>
-		<row><td>AlwaysInstall</td><td/><td>##DN_AlwaysInstall##</td><td>Enter the description for this feature here.</td><td>0</td><td>1</td><td>INSTALLDIR</td><td>16</td><td/><td>Enter comments regarding this feature here.</td><td/><td/></row>
+		<row><td>Network_Adapter_Selector</td><td/><td>##DN_AlwaysInstall##</td><td>##ID_STRING8##</td><td>0</td><td>1</td><td>INSTALLDIR</td><td>16</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="FeatureComponents">
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT2</td></row>
-		<row><td>AlwaysInstall</td><td>NetworkAdapterSelector.Hook.Content_Files</td></row>
-		<row><td>AlwaysInstall</td><td>NetworkAdapterSelector.Hook.Primary_output</td></row>
-		<row><td>AlwaysInstall</td><td>NetworkAdapterSelector.ShellExtension.Content_Files</td></row>
-		<row><td>AlwaysInstall</td><td>NetworkAdapterSelector.ShellExtension.Primary_output</td></row>
+		<row><td>Network_Adapter_Selector</td><td>AllOtherFiles</td></row>
+		<row><td>Network_Adapter_Selector</td><td>CommandLine.dll</td></row>
+		<row><td>Network_Adapter_Selector</td><td>EasyHook.dll</td></row>
+		<row><td>Network_Adapter_Selector</td><td>EasyHook32.dll</td></row>
+		<row><td>Network_Adapter_Selector</td><td>EasyHook32Svc.exe</td></row>
+		<row><td>Network_Adapter_Selector</td><td>EasyHook64.dll</td></row>
+		<row><td>Network_Adapter_Selector</td><td>EasyHook64Svc.exe</td></row>
+		<row><td>Network_Adapter_Selector</td><td>EasyLoad32.dll</td></row>
+		<row><td>Network_Adapter_Selector</td><td>EasyLoad64.dll</td></row>
+		<row><td>Network_Adapter_Selector</td><td>ISRegistryComponent_x64</td></row>
+		<row><td>Network_Adapter_Selector</td><td>ISRegistryComponent_x86</td></row>
+		<row><td>Network_Adapter_Selector</td><td>NetworkAdapterSelector.Hook.exe</td></row>
+		<row><td>Network_Adapter_Selector</td><td>NetworkAdapterSelector.ShellExtension.dll</td></row>
+		<row><td>Network_Adapter_Selector</td><td>SharpShell.dll</td></row>
+		<row><td>Network_Adapter_Selector</td><td>srm.exe</td></row>
 	</table>
 
 	<table name="File">
@@ -1901,11 +1886,19 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>license</td><td>ISX_DEFAULTCOMPONENT1</td><td>LICENSE</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISProjectFolder&gt;\..\LICENSE</td><td>1</td><td/></row>
-		<row><td>networkadapterselector.hook.</td><td>NetworkAdapterSelector.Hook.Primary_output</td><td>NetworkAdapterSelector.Hook.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.Hook&gt;|Built</td><td>3</td><td/></row>
-		<row><td>networkadapterselector.hook.1</td><td>NetworkAdapterSelector.Hook.Content_Files</td><td>NetworkAdapterSelector.Hook.Content Files</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.Hook&gt;|ContentFiles</td><td>3</td><td/></row>
-		<row><td>networkadapterselector.shell</td><td>NetworkAdapterSelector.ShellExtension.Primary_output</td><td>NetworkAdapterSelector.ShellExtension.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.ShellExtension&gt;|Built</td><td>3</td><td/></row>
-		<row><td>networkadapterselector.shell1</td><td>NetworkAdapterSelector.ShellExtension.Content_Files</td><td>NetworkAdapterSelector.ShellExtension.Content Files</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;NetworkAdapterSelector.ShellExtension&gt;|ContentFiles</td><td>3</td><td/></row>
+		<row><td>commandline.dll</td><td>CommandLine.dll</td><td>COMMAN~1.DLL|CommandLine.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\CommandLine.dll</td><td>1</td><td/></row>
+		<row><td>easyhook.dll</td><td>EasyHook.dll</td><td>EasyHook.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\EasyHook.dll</td><td>1</td><td/></row>
+		<row><td>easyhook32.dll</td><td>EasyHook32.dll</td><td>EASYHO~1.DLL|EasyHook32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\EasyHook32.dll</td><td>1</td><td/></row>
+		<row><td>easyhook32svc.exe</td><td>EasyHook32Svc.exe</td><td>EASYHO~1.EXE|EasyHook32Svc.exe</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\EasyHook32Svc.exe</td><td>1</td><td/></row>
+		<row><td>easyhook64.dll</td><td>EasyHook64.dll</td><td>EASYHO~1.DLL|EasyHook64.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\EasyHook64.dll</td><td>1</td><td/></row>
+		<row><td>easyhook64svc.exe</td><td>EasyHook64Svc.exe</td><td>EASYHO~1.EXE|EasyHook64Svc.exe</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\EasyHook64Svc.exe</td><td>1</td><td/></row>
+		<row><td>easyload32.dll</td><td>EasyLoad32.dll</td><td>EASYLO~1.DLL|EasyLoad32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\EasyLoad32.dll</td><td>1</td><td/></row>
+		<row><td>easyload64.dll</td><td>EasyLoad64.dll</td><td>EASYLO~1.DLL|EasyLoad64.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\EasyLoad64.dll</td><td>1</td><td/></row>
+		<row><td>license</td><td>ISRegistryComponent_x86</td><td>LICENSE</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISProjectFolder&gt;\..\LICENSE</td><td>1</td><td/></row>
+		<row><td>networkadapterselector.hook.</td><td>NetworkAdapterSelector.Hook.exe</td><td>NETWOR~1.EXE|NetworkAdapterSelector.Hook.exe</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES&gt;\NetworkAdapterSelector.Hook.exe</td><td>1</td><td/></row>
+		<row><td>networkadapterselector.shell</td><td>NetworkAdapterSelector.ShellExtension.dll</td><td>NETWOR~1.DLL|NetworkAdapterSelector.ShellExtension.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES1&gt;\NetworkAdapterSelector.ShellExtension.dll</td><td>1</td><td/></row>
+		<row><td>sharpshell.dll</td><td>SharpShell.dll</td><td>SHARPS~1.DLL|SharpShell.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES1&gt;\SharpShell.dll</td><td>1</td><td/></row>
+		<row><td>srm.exe</td><td>srm.exe</td><td>srm.exe</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;PATH_TO_RELEASE_FILES1&gt;\srm.exe</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2049,12 +2042,21 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_66A43B5E_B1FD_4258_B2A0_0F449455B7D3_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_BB99D4EE_ADA0_494D_9CC5_C481100B251D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NetworkAdapterSelector.Hook.Content_Files</td><td/><td/><td>_AE822484_3D2E_46B6_9F0B_AADB15E9859D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NetworkAdapterSelector.Hook.Primary_output</td><td/><td/><td>_E9B15A4B_0FDB_47A7_9A7E_098C1554C22B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NetworkAdapterSelector.ShellExtension.Content_Files</td><td/><td/><td>_C8210AEF_609F_434D_8806_F5C3B1B27322_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>NetworkAdapterSelector.ShellExtension.Primary_output</td><td/><td/><td>_C0819D95_08D3_4C3A_B409_4E58DF077E37_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>AllOtherFiles</td><td/><td/><td>_54B3262B_DF21_4962_9330_78CD0D45E830_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CommandLine.dll</td><td/><td/><td>_1E97223A_3272_4A23_A7B2_2AAB024689E4_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EasyHook.dll</td><td/><td/><td>_A7446AB5_ECC9_4AA1_A097_24761E80CED1_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EasyHook32.dll</td><td/><td/><td>_EDE53876_A8F1_4B20_8470_963A3D7EEBBB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EasyHook32Svc.exe</td><td/><td/><td>_46F2B9B9_10B5_4879_AD07_14A2179CC6E5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EasyHook64.dll</td><td/><td/><td>_A86A9F97_59F1_44AE_99BD_77B6114699B5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EasyHook64Svc.exe</td><td/><td/><td>_9B7B1C14_6034_4F3D_88F7_7DD156FC1C44_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EasyLoad32.dll</td><td/><td/><td>_0959A246_95B1_4514_8F3A_10311F838F88_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EasyLoad64.dll</td><td/><td/><td>_8723437A_4EEB_4735_B470_8033BE4E70A8_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISRegistryComponent_x64</td><td/><td/><td>_BB99D4EE_ADA0_494D_9CC5_C481100B251D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISRegistryComponent_x86</td><td/><td/><td>_66A43B5E_B1FD_4258_B2A0_0F449455B7D3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NetworkAdapterSelector.Hook.exe</td><td/><td/><td>_8E79CE2F_8D4D_4B3A_8CD4_EA685B49EED5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>NetworkAdapterSelector.ShellExtension.dll</td><td/><td/><td>_ED322284_63A2_494D_A05B_43EFFDDBA4A1_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SharpShell.dll</td><td/><td/><td>_FE95F292_FB5B_4E21_A610_CAD9752CCD37_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>srm.exe</td><td/><td/><td>_F81FAFFE_F1A7_40F6_8A19_18E84C91F922_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2062,6 +2064,14 @@
 		<col def="S0">Description</col>
 		<col def="S255">FileType</col>
 		<col def="S255">ISCAReferenceFilePath</col>
+	</table>
+
+	<table name="ISDIM">
+		<col key="yes" def="s255">DIM</col>
+		<col def="S0">ISBuildSourcePath</col>
+		<col def="S255">Name</col>
+		<col def="S255">Destination</col>
+		<col def="I4">ISAttributes</col>
 	</table>
 
 	<table name="ISDIMDependency">
@@ -2121,6 +2131,11 @@
 	<table name="ISFeatureDIMReferences">
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">ISDIMReference_</col>
+	</table>
+
+	<table name="ISFeatureDIMs">
+		<col key="yes" def="s38">Feature_</col>
+		<col key="yes" def="s255">ISDIM_</col>
 	</table>
 
 	<table name="ISFeatureMergeModuleExcludes">
@@ -2273,6 +2288,15 @@
 		<col def="L255">HelpKeyword</col>
 	</table>
 
+	<table name="ISNetworkShares">
+		<col key="yes" def="s72">Component_</col>
+		<col def="S255">ServerName</col>
+		<col def="s255">ShareName</col>
+		<col def="S0">Remark</col>
+		<col def="i4">Permission</col>
+		<col def="i4">MaxUsers</col>
+	</table>
+
 	<table name="ISObject">
 		<col key="yes" def="s50">ObjectName</col>
 		<col def="s15">Language</col>
@@ -2337,8 +2361,8 @@
 		<row><td>ISProductFolder</td><td/><td/><td>1</td></row>
 		<row><td>ISProjectDataFolder</td><td/><td/><td>1</td></row>
 		<row><td>ISProjectFolder</td><td/><td/><td>1</td></row>
-		<row><td>NetworkAdapterSelector.Hook</td><td>NetworkAdapterSelector.Hook\NetworkAdapterSelector.Hook.csproj</td><td/><td>2</td></row>
-		<row><td>NetworkAdapterSelector.ShellExtension</td><td>NetworkAdapterSelector.ShellExtension\NetworkAdapterSelector.ShellExtension.csproj</td><td/><td>2</td></row>
+		<row><td>PATH_TO_RELEASE_FILES</td><td>&lt;ISProjectFolder&gt;\..\NetworkAdapterSelector.Hook\bin\Release</td><td/><td>2</td></row>
+		<row><td>PATH_TO_RELEASE_FILES1</td><td>&lt;ISProjectFolder&gt;\..\NetworkAdapterSelector.ShellExtension\bin\Release</td><td/><td>2</td></row>
 		<row><td>ProgramFilesFolder</td><td/><td/><td>1</td></row>
 		<row><td>SystemFolder</td><td/><td/><td>1</td></row>
 		<row><td>WindowsFolder</td><td/><td/><td>1</td></row>
@@ -2348,7 +2372,7 @@
 		<col key="yes" def="s72">ISProductConfiguration</col>
 		<col def="S255">ProductConfigurationFlags</col>
 		<col def="I4">GeneratePackageCode</col>
-		<row><td>Express</td><td/><td>1</td></row>
+		<row><td>x64</td><td/><td>1</td></row>
 	</table>
 
 	<table name="ISProductConfigurationInstance">
@@ -2362,6 +2386,9 @@
 		<col key="yes" def="s72">ISProductConfiguration_</col>
 		<col key="yes" def="s72">Property</col>
 		<col def="L255">Value</col>
+		<row><td>x64</td><td>IncludeActionHelp</td><td>1</td></row>
+		<row><td>x64</td><td>SetupFileName</td><td>Setup_x64</td></row>
+		<row><td>x64</td><td>TemplateSummary</td><td>x64;1033</td></row>
 	</table>
 
 	<table name="ISRelease">
@@ -2395,14 +2422,7 @@
 		<col def="S255">DotNetBuildConfiguration</col>
 		<col def="S255">MsiCommandLine</col>
 		<col def="I4">ISSetupPrerequisiteLocation</col>
-		<row><td>CD_ROM</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>0</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>650</td><td>0</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>Custom</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>2</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>100</td><td>0</td><td>1024</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>DVD-10</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>8.75</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>DVD-18</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>15.83</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>DVD-5</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>4.38</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>DVD-9</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>7.95</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>SingleImage</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>0</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>109597</td><td/><td/><td/><td>2</td></row>
-		<row><td>WebDeployment</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>4</td><td>1033</td><td>2</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>124941</td><td/><td/><td/><td>3</td></row>
+		<row><td>x64 Release</td><td>x64</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>2</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td>x64</td><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75573261</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISReleaseASPublishInfo">
@@ -2443,14 +2463,7 @@
 		<col def="I4">MsiEngineVersion</col>
 		<col def="S255">WinMsi30Url</col>
 		<col def="S255">CertPassword</col>
-		<row><td>CD_ROM</td><td>Express</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>0</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td>0</td><td>http://www.installengine.com/cert05/isengine</td><td>0</td><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td/><td>3</td><td/><td>http://www.installengine.com/Msiengine30</td><td/></row>
-		<row><td>Custom</td><td>Express</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>0</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td>0</td><td>http://www.installengine.com/cert05/isengine</td><td>0</td><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td/><td>3</td><td/><td>http://www.installengine.com/Msiengine30</td><td/></row>
-		<row><td>DVD-10</td><td>Express</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>0</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td>0</td><td>http://www.installengine.com/cert05/isengine</td><td>0</td><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td/><td>3</td><td/><td>http://www.installengine.com/Msiengine30</td><td/></row>
-		<row><td>DVD-18</td><td>Express</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>0</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td>0</td><td>http://www.installengine.com/cert05/isengine</td><td>0</td><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td/><td>3</td><td/><td>http://www.installengine.com/Msiengine30</td><td/></row>
-		<row><td>DVD-5</td><td>Express</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>0</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td>0</td><td>http://www.installengine.com/cert05/isengine</td><td>0</td><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td/><td>3</td><td/><td>http://www.installengine.com/Msiengine30</td><td/></row>
-		<row><td>DVD-9</td><td>Express</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>0</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td>0</td><td>http://www.installengine.com/cert05/isengine</td><td>0</td><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td/><td>3</td><td/><td>http://www.installengine.com/Msiengine30</td><td/></row>
-		<row><td>SingleImage</td><td>Express</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>1</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td>0</td><td>http://www.installengine.com/cert05/isengine</td><td>0</td><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td>1024</td><td>3</td><td/><td>http://www.installengine.com/Msiengine30</td><td/></row>
-		<row><td>WebDeployment</td><td>Express</td><td>0</td><td>http://</td><td>0</td><td>setup</td><td>Default</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>2</td><td>http://www.Installengine.com/Msiengine20</td><td>http://www.Installengine.com/Msiengine20</td><td>0</td><td>http://www.installengine.com/cert05/isengine</td><td>0</td><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td/><td>3</td><td/><td>http://www.installengine.com/Msiengine30</td><td/></row>
+		<row><td>x64 Release</td><td>x64</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>1</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td/><td>http://www.installengine.com/cert05/isengine</td><td/><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td>528</td><td>3</td><td>16</td><td>http://www.installengine.com/Msiengine30</td><td/></row>
 	</table>
 
 	<table name="ISReleaseProperty">
@@ -2585,8 +2598,49 @@
 		<col def="i4">Attributes</col>
 	</table>
 
+	<table name="ISScheduledTasks">
+		<col key="yes" def="s72">ISScheduledTasks</col>
+		<col def="s72">Component_</col>
+		<col def="l255">TaskName</col>
+		<col def="L0">Comments</col>
+		<col def="s255">TaskRun</col>
+		<col def="S255">Arguments</col>
+		<col def="S72">WkDir</col>
+		<col def="S255">UserName</col>
+		<col def="S255">Password</col>
+		<col def="S255">StartTime</col>
+		<col def="s255">Schedule</col>
+		<col def="S255">Modifier</col>
+		<col def="S255">Days</col>
+		<col def="S255">Months</col>
+		<col def="I4">IdleTime</col>
+		<col def="S255">StartDate</col>
+		<col def="S255">EndDate</col>
+		<col def="I4">Attributes</col>
+	</table>
+
 	<table name="ISScriptFile">
 		<col key="yes" def="s255">ISScriptFile</col>
+	</table>
+
+	<table name="ISSearchReplace">
+		<col key="yes" def="s72">ISSearchReplace</col>
+		<col def="s72">ISSearchReplaceSet_</col>
+		<col def="S0">Search</col>
+		<col def="S0">Replace</col>
+		<col def="i2">Attributes</col>
+		<col def="i2">Order</col>
+	</table>
+
+	<table name="ISSearchReplaceSet">
+		<col key="yes" def="s72">ISSearchReplaceSet</col>
+		<col def="s72">Component_</col>
+		<col def="s72">Directory_</col>
+		<col def="S0">IncludeFiles</col>
+		<col def="S0">ExcludeFiles</col>
+		<col def="i2">Attributes</col>
+		<col def="i2">Order</col>
+		<col def="i2">CodePage</col>
 	</table>
 
 	<table name="ISSelfReg">
@@ -2627,9 +2681,9 @@
 	<table name="ISSetupTypeFeatures">
 		<col key="yes" def="s38">ISSetupType_</col>
 		<col key="yes" def="s38">Feature_</col>
-		<row><td>Custom</td><td>AlwaysInstall</td></row>
-		<row><td>Minimal</td><td>AlwaysInstall</td></row>
-		<row><td>Typical</td><td>AlwaysInstall</td></row>
+		<row><td>Custom</td><td>Network_Adapter_Selector</td></row>
+		<row><td>Minimal</td><td>Network_Adapter_Selector</td></row>
+		<row><td>Typical</td><td>Network_Adapter_Selector</td></row>
 	</table>
 
 	<table name="ISStorages">
@@ -2645,15 +2699,52 @@
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
 		<row><td>COMPANY_NAME</td><td>1033</td><td>Falahati.net</td><td>0</td><td/><td>1914963457</td></row>
-		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1914965121</td></row>
+		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Network Adapter Selector</td><td>0</td><td/><td>1420216385</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_ACROBAT5FOLDER</td><td>1033</td><td>   Adobe Acrobat 5 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_ADOBEREADER10FOLDER</td><td>1033</td><td>Adobe Reader 10 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_ADOBEREADER11FOLDER</td><td>1033</td><td>Adobe Reader 11 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_ADOBEREADER6FOLDER</td><td>1033</td><td>Adobe Reader 6 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_ADOBEREADER7FOLDER</td><td>1033</td><td>Adobe Reader 7 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_ADOBEREADER8FOLDER</td><td>1033</td><td>Adobe Reader 8 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_ADOBEREADER9FOLDER</td><td>1033</td><td>Adobe Reader 9 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_ADOBEREADERDCFOLDER</td><td>1033</td><td>Adobe Reader DC needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1914965121</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION10</td><td>1033</td><td>Microsoft .NET Framework 1.0 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION11</td><td>1033</td><td>Microsoft .NET Framework 1.1 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION20</td><td>1033</td><td>Microsoft .NET Framework 2.0 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION20SP1</td><td>1033</td><td>Microsoft .NET Framework 2.0 SP1 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION30</td><td>1033</td><td>Microsoft .NET Framework 3.0 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION30SP1</td><td>1033</td><td>Microsoft .NET Framework 3.0 SP1 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35</td><td>1033</td><td>Microsoft .NET Framework 3.5 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35SP1</td><td>1033</td><td>Microsoft .NET Framework 3.5 SP1 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40CLIENT</td><td>1033</td><td>Microsoft .NET Framework 4.0 Client Package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1915016321</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL</td><td>1033</td><td>Microsoft .NET Framework 4.0 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1914967201</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION451FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5.1 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION452FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5.2 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1914969249</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION461FULL</td><td>1033</td><td>Microsoft .NET Framework 4.6.1 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION46FULL</td><td>1033</td><td>Microsoft .NET Framework 4.6 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_IE10FOUND</td><td>1033</td><td>Internet Explorer 10 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_IE11FOUND</td><td>1033</td><td>Internet Explorer 11 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_IE5FOUND</td><td>1033</td><td>Internet Explorer 5 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_IE6FOUND</td><td>1033</td><td>Internet Explorer 6 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_IE7FOUND</td><td>1033</td><td>Internet Explorer 7 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_IE8FOUND</td><td>1033</td><td>Internet Explorer 8 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_IE9FOUND</td><td>1033</td><td>Internet Explorer 9 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MDAC27FOUND</td><td>1033</td><td>MDAC 2.7 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MDACFOUND</td><td>1033</td><td>MDAC 2.6 SP2 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MSOFFICE2003</td><td>1033</td><td>Microsoft Office 2003 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MSOFFICE2007</td><td>1033</td><td>Microsoft Office 2007 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MSOFFICE2010</td><td>1033</td><td>Microsoft Office 2010 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MSOFFICE2013x64</td><td>1033</td><td>Microsoft Office 2013 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MSOFFICE2013x86</td><td>1033</td><td>Microsoft Office 2013 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MSOFFICE2016</td><td>1033</td><td>Microsoft Office 2016 Click-to-Run or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>1914965121</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_POWERSHELLVERSION</td><td>1033</td><td>Windows PowerShell needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1914965121</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1914965121</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SCREEN</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1914965121</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SQLEXP2008SP1FOUND</td><td>1033</td><td>SQL Server 2008 Express SP1 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1420189472</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPACT</td><td>1033</td><td>Compact</td><td>0</td><td/><td>1914965121</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPACT_DESC</td><td>1033</td><td>Compact Description</td><td>0</td><td/><td>1914965121</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPLETE</td><td>1033</td><td>Complete</td><td>0</td><td/><td>1914965121</td></row>
@@ -3566,6 +3657,10 @@
 		<row><td>IDS__IsAdminInstallPoint_NetworkLocationFormatted</td><td>1033</td><td>{&amp;MSSansBold8}Network Location</td><td>0</td><td/><td>1914965121</td></row>
 		<row><td>IDS__IsAdminInstallPoint_SpecifyNetworkLocation</td><td>1033</td><td>Specify a network location for the server image of the product.</td><td>0</td><td/><td>1914965121</td></row>
 		<row><td>IDS__IsBrowseButton</td><td>1033</td><td>&amp;Browse...</td><td>0</td><td/><td>1914965121</td></row>
+		<row><td>IDS__IsBrowseCertficateDlg_CertificatePath</td><td>1033</td><td>&amp;SSL Certificate Path:</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDS__IsBrowseCertficateDlg_Description</td><td>1033</td><td>SSL Certificate settings.</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDS__IsBrowseCertficateDlg_Password</td><td>1033</td><td>SSL Certificate &amp;Password:</td><td>0</td><td/><td>1420189472</td></row>
+		<row><td>IDS__IsBrowseCertficateDlg_Title</td><td>1033</td><td>{&amp;MSSansBold8}Configure SSL for IIS.</td><td>0</td><td/><td>1420189472</td></row>
 		<row><td>IDS__IsBrowseFolderDlg_11</td><td>1033</td><td/><td>0</td><td/><td>1914965121</td></row>
 		<row><td>IDS__IsBrowseFolderDlg_4</td><td>1033</td><td/><td>0</td><td/><td>1914965121</td></row>
 		<row><td>IDS__IsBrowseFolderDlg_8</td><td>1033</td><td/><td>0</td><td/><td>1914965121</td></row>
@@ -3754,6 +3849,7 @@
 		<row><td>ID_STRING5</td><td>1033</td><td>https://github.com/falahati/NetworkAdapterSelector/issues</td><td>0</td><td/><td>1914970532</td></row>
 		<row><td>ID_STRING6</td><td>1033</td><td>Github Issues</td><td>0</td><td/><td>1914988033</td></row>
 		<row><td>ID_STRING7</td><td>1033</td><td>Installation Database</td><td>0</td><td/><td>1915013412</td></row>
+		<row><td>ID_STRING8</td><td>1033</td><td/><td>0</td><td/><td>1420183617</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1914965121</td></row>
 	</table>
 
@@ -3819,6 +3915,15 @@
 		<col key="yes" def="s72">Shortcut_</col>
 		<col key="yes" def="s72">Name</col>
 		<col def="s255">Value</col>
+	</table>
+
+	<table name="ISVisualElement">
+		<col key="yes" def="s72">File_</col>
+		<col def="s72">BackgroundColor</col>
+		<col def="s72">ForegroundText</col>
+		<col def="s72">ShowNameOn150x150</col>
+		<col def="S255">Square150x150Logo</col>
+		<col def="S255">Square70x70Logo</col>
 	</table>
 
 	<table name="ISWSEWrap">
@@ -3939,7 +4044,7 @@
 		<row><td>RegisterMIMEInfo</td><td/><td>4900</td><td>RegisterMIMEInfo</td><td/></row>
 		<row><td>RegisterProduct</td><td/><td>6100</td><td>RegisterProduct</td><td/></row>
 		<row><td>RegisterProgIdInfo</td><td/><td>4800</td><td>RegisterProgIdInfo</td><td/></row>
-		<row><td>RegisterShellExtension</td><td>Installed</td><td>6602</td><td/><td/></row>
+		<row><td>RegisterShellExtension</td><td>NOT Installed</td><td>4045</td><td/><td/></row>
 		<row><td>RegisterTypeLibraries</td><td/><td>5500</td><td>RegisterTypeLibraries</td><td/></row>
 		<row><td>RegisterUser</td><td/><td>6000</td><td>RegisterUser</td><td/></row>
 		<row><td>RemoveDuplicateFiles</td><td/><td>3400</td><td>RemoveDuplicateFiles</td><td/></row>
@@ -3969,13 +4074,14 @@
 		<row><td>UnregisterFonts</td><td/><td>2500</td><td>UnregisterFonts</td><td/></row>
 		<row><td>UnregisterMIMEInfo</td><td/><td>3000</td><td>UnregisterMIMEInfo</td><td/></row>
 		<row><td>UnregisterProgIdInfo</td><td/><td>2900</td><td>UnregisterProgIdInfo</td><td/></row>
-		<row><td>UnregisterShellExtension</td><td>REMOVE~="ALL"</td><td>1499</td><td/><td/></row>
+		<row><td>UnregisterShellExtension</td><td>(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</td><td>1950</td><td/><td/></row>
 		<row><td>UnregisterTypeLibraries</td><td/><td>2300</td><td>UnregisterTypeLibraries</td><td/></row>
 		<row><td>ValidateProductID</td><td/><td>700</td><td>ValidateProductID</td><td/></row>
 		<row><td>WriteEnvironmentStrings</td><td/><td>5200</td><td>WriteEnvironmentStrings</td><td/></row>
 		<row><td>WriteIniValues</td><td/><td>5100</td><td>WriteIniValues</td><td/></row>
 		<row><td>WriteRegistryValues</td><td/><td>5000</td><td>WriteRegistryValues</td><td/></row>
 		<row><td>setAllUsersProfile2K</td><td>VersionNT &gt;= 500</td><td>980</td><td/><td/></row>
+		<row><td>setPublicProfileVista</td><td>VersionNT &gt;= 600</td><td>981</td><td/><td/></row>
 		<row><td>setUserProfileNT</td><td>VersionNT</td><td>960</td><td/><td/></row>
 	</table>
 
@@ -3984,8 +4090,8 @@
 		<col def="S0">Value</col>
 		<row><td>ActiveLanguage</td><td>1033</td></row>
 		<row><td>Comments</td><td/></row>
-		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="de9f554a3bc05c12be9c31b998217995">
-UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
+		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="9055285be6b69d66317ee65ec165301f">
+eAA2ADQAIABSAGUAbABlAGEAcwBlAAEAeAA2ADQA
 			</td></row>
 		<row><td>DefaultProductConfiguration</td><td>Express</td></row>
 		<row><td>EnableSwidtag</td><td>1</td></row>
@@ -4003,19 +4109,18 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISUSLock</td><td>{324B972B-88FC-4E17-B50C-9741ADD9287B}</td></row>
 		<row><td>ISUSSignature</td><td>{C8613E32-912E-446B-BA2A-B822AD4F7E85}</td></row>
 		<row><td>ISVisitedViews</td><td>viewAssistant,viewRegistry,viewLearnMore,viewISToday,viewProject,viewAppFiles,viewUpgradePaths,viewUpdateService,viewObjects,viewShortcuts,viewIniFiles,viewFileExtensions,viewEnvironmentVariables,viewVRoots,viewServices,viewUI,viewTextMessages,viewSystemSearch,viewCustomActions,viewRelease</td></row>
-		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
 		<row><td>MsiLogFile</td><td/></row>
-		<row><td>OnUpgrade</td><td>0</td></row>
+		<row><td>OnUpgrade</td><td>1</td></row>
 		<row><td>Owner</td><td/></row>
 		<row><td>PatchFamily</td><td>MyPatchFamily1</td></row>
 		<row><td>PatchSequence</td><td>1.0.0</td></row>
 		<row><td>SaveAsSchema</td><td/></row>
 		<row><td>SccEnabled</td><td>0</td></row>
 		<row><td>SccPath</td><td/></row>
-		<row><td>SchemaVersion</td><td>776</td></row>
-		<row><td>Type</td><td>MSIE</td></row>
+		<row><td>SchemaVersion</td><td>779</td></row>
+		<row><td>Type</td><td>MSI</td></row>
 	</table>
 
 	<table name="InstallUISequence">
@@ -4049,6 +4154,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SetupResume</td><td>Installed And (RESUME Or Preselected) And Not PATCH</td><td>1220</td><td>SetupResume</td><td/></row>
 		<row><td>ValidateProductID</td><td/><td>700</td><td>ValidateProductID</td><td/></row>
 		<row><td>setAllUsersProfile2K</td><td>VersionNT &gt;= 500</td><td>980</td><td/><td/></row>
+		<row><td>setPublicProfileVista</td><td>VersionNT &gt;= 600</td><td>981</td><td/><td/></row>
 		<row><td>setUserProfileNT</td><td>VersionNT</td><td>960</td><td/><td/></row>
 	</table>
 
@@ -4385,7 +4491,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]NetworkAdapterSelector.ShellExtension.Primary output</td><td/></row>
 		<row><td>ProductCode</td><td>{2382E198-6B14-42F7-B63C-89301E5F5EBC}</td><td/></row>
 		<row><td>ProductName</td><td>Network Adapter Selector</td><td/></row>
-		<row><td>ProductVersion</td><td>1.0.0.0</td><td/></row>
+		<row><td>ProductVersion</td><td>1.1.0.0</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4454,12 +4560,12 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S0">Value</col>
 		<col def="s72">Component_</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>Registry1</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>ExecutableAddress</td><td>[INSTALLDIR]NetworkAdapterSelector.Hook.exe</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
-		<row><td>Registry2</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>ExecutableAddress</td><td>[INSTALLDIR]NetworkAdapterSelector.Hook.exe</td><td>ISX_DEFAULTCOMPONENT2</td><td>0</td></row>
-		<row><td>Registry3</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>Version</td><td>[ProductVersion]</td><td>ISX_DEFAULTCOMPONENT2</td><td>0</td></row>
-		<row><td>Registry4</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>InstallDir</td><td>[INSTALLDIR]</td><td>ISX_DEFAULTCOMPONENT2</td><td>0</td></row>
-		<row><td>Registry5</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>InstallDir</td><td>[INSTALLDIR]</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
-		<row><td>Registry6</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>Version</td><td>[ProductVersion]</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry1</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>ExecutableAddress</td><td>[INSTALLDIR]NetworkAdapterSelector.Hook.exe</td><td>ISRegistryComponent_x86</td><td>0</td></row>
+		<row><td>Registry2</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>ExecutableAddress</td><td>[INSTALLDIR]NetworkAdapterSelector.Hook.exe</td><td>ISRegistryComponent_x64</td><td>0</td></row>
+		<row><td>Registry3</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>Version</td><td>[ProductVersion]</td><td>ISRegistryComponent_x64</td><td>0</td></row>
+		<row><td>Registry4</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>InstallDir</td><td>[INSTALLDIR]</td><td>ISRegistryComponent_x64</td><td>0</td></row>
+		<row><td>Registry5</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>InstallDir</td><td>[INSTALLDIR]</td><td>ISRegistryComponent_x86</td><td>0</td></row>
+		<row><td>Registry6</td><td>2</td><td>SOFTWARE\Network Adapter Selector</td><td>Version</td><td>[ProductVersion]</td><td>ISRegistryComponent_x86</td><td>0</td></row>
 	</table>
 
 	<table name="RemoveFile">
@@ -4726,7 +4832,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>AppId</td><td>RunAsInteractiveUser</td><td>Y</td><td>0</td><td>1</td><td/><td/><td/><td/><td/></row>
 		<row><td>AppId</td><td>ServiceParameters</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td/></row>
 		<row><td>AppSearch</td><td>Property</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>The property associated with a Signature</td></row>
-		<row><td>AppSearch</td><td>Signature_</td><td>N</td><td/><td/><td>ISXmlLocator;Signature</td><td>1</td><td>Identifier</td><td/><td>The Signature_ represents a unique file signature and is also the foreign key in the Signature,  RegLocator, IniLocator, CompLocator and the DrLocator tables.</td></row>
+		<row><td>AppSearch</td><td>Signature_</td><td>N</td><td/><td/><td>ISXmlLocator;Signature;RegLocator;IniLocator;DrLocator;CompLocator</td><td>1</td><td>Identifier</td><td/><td>The Signature_ represents a unique file signature and is also the foreign key in the Signature,  RegLocator, IniLocator, CompLocator and the DrLocator tables.</td></row>
 		<row><td>BBControl</td><td>Attributes</td><td>Y</td><td>0</td><td>2147483647</td><td/><td/><td/><td/><td>A 32-bit word that specifies the attribute flags to be applied to this control.</td></row>
 		<row><td>BBControl</td><td>BBControl</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Name of the control. This name must be unique within a billboard, but can repeat on different billboard.</td></row>
 		<row><td>BBControl</td><td>Billboard_</td><td>N</td><td/><td/><td>Billboard</td><td>1</td><td>Identifier</td><td/><td>External key to the Billboard table, name of the billboard.</td></row>
@@ -4978,6 +5084,11 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISCustomActionReference</td><td>Description</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Contents of the file speciifed in ISCAReferenceFilePath. This column is only used by MSI.</td></row>
 		<row><td>ISCustomActionReference</td><td>FileType</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>file type of the file specified  ISCAReferenceFilePath. This column is only used by MSI.</td></row>
 		<row><td>ISCustomActionReference</td><td>ISCAReferenceFilePath</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Full path, the category is of Text instead of Path because of potential use of path variables.  This column only exists in ISM.</td></row>
+		<row><td>ISDIM</td><td>DIM</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>The GUID identifying the DIM</td></row>
+		<row><td>ISDIM</td><td>Destination</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Destination.</td></row>
+		<row><td>ISDIM</td><td>ISAttributes</td><td>Y</td><td/><td/><td/><td/><td/><td/><td>This is used to store Installshield custom properties of a DIM.</td></row>
+		<row><td>ISDIM</td><td>ISBuildSourcePath</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Full path, the category is of Text instead of Path because of potential use of path variables.</td></row>
+		<row><td>ISDIM</td><td>Name</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Name of the DIM.</td></row>
 		<row><td>ISDIMDependency</td><td>ISDIMReference_</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>This is the primary key to the ISDIMDependency table</td></row>
 		<row><td>ISDIMDependency</td><td>RequiredBuildVersion</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>the build version identifying the required DIM</td></row>
 		<row><td>ISDIMDependency</td><td>RequiredMajorVersion</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>the major version identifying the required DIM</td></row>
@@ -5010,6 +5121,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISDynamicFile</td><td>SourceFolder</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>Full path, the category is of Text instead of Path because of potential use of path variables.</td></row>
 		<row><td>ISFeatureDIMReferences</td><td>Feature_</td><td>N</td><td/><td/><td>Feature</td><td>1</td><td>Identifier</td><td/><td>Foreign key into Feature table.</td></row>
 		<row><td>ISFeatureDIMReferences</td><td>ISDIMReference_</td><td>N</td><td/><td/><td>ISDIMReference</td><td>1</td><td>Identifier</td><td/><td>Foreign key into ISDIMReference table.</td></row>
+		<row><td>ISFeatureDIMs</td><td>Feature_</td><td>N</td><td/><td/><td>Feature</td><td>1</td><td>Identifier</td><td/><td>Foreign key into Feature table.</td></row>
+		<row><td>ISFeatureDIMs</td><td>ISDIM_</td><td>N</td><td/><td/><td>ISDIM</td><td>1</td><td>Text</td><td/><td>Foreign key into ISDIM table.</td></row>
 		<row><td>ISFeatureMergeModuleExcludes</td><td>Feature_</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Foreign key into Feature table.</td></row>
 		<row><td>ISFeatureMergeModuleExcludes</td><td>Language</td><td>N</td><td/><td/><td/><td/><td/><td/><td>Foreign key into ISMergeModule table.</td></row>
 		<row><td>ISFeatureMergeModuleExcludes</td><td>ModuleID</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Foreign key into ISMergeModule table.</td></row>
@@ -5106,6 +5219,12 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISMergeModuleCfgValues</td><td>ModuleConfiguration_</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Identifier, foreign key into ModuleConfiguration table (ModuleConfiguration.Name)</td></row>
 		<row><td>ISMergeModuleCfgValues</td><td>Type</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Type (from configurable merge module)</td></row>
 		<row><td>ISMergeModuleCfgValues</td><td>Value</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Value for this item.</td></row>
+		<row><td>ISNetworkShares</td><td>Component_</td><td>N</td><td/><td/><td>Component</td><td>1</td><td>Identifier</td><td/><td>Required foreign key into the Component Table.</td></row>
+		<row><td>ISNetworkShares</td><td>MaxUsers</td><td>N</td><td/><td/><td/><td/><td/><td/><td>The maximum number of concurrent connections that the shared resource can accommodate.</td></row>
+		<row><td>ISNetworkShares</td><td>Permission</td><td>N</td><td/><td/><td/><td/><td/><td/><td>Permission Access mask.</td></row>
+		<row><td>ISNetworkShares</td><td>Remark</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>The optional comment about the shared resource.</td></row>
+		<row><td>ISNetworkShares</td><td>ServerName</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>The DNS or NetBIOS name of the remote server on which the function is to execute.</td></row>
+		<row><td>ISNetworkShares</td><td>ShareName</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>The share name of the resource.</td></row>
 		<row><td>ISObject</td><td>Language</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td/></row>
 		<row><td>ISObject</td><td>ObjectName</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td/></row>
 		<row><td>ISObjectProperty</td><td>IncludeInBuild</td><td>Y</td><td/><td/><td/><td/><td/><td/><td>Boolean, 0 for false non 0 for true</td></row>
@@ -5151,7 +5270,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISProductConfigurationInstance</td><td>Property</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>Product Congiuration property name</td></row>
 		<row><td>ISProductConfigurationInstance</td><td>Value</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>String value for property.</td></row>
 		<row><td>ISProductConfigurationProperty</td><td>ISProductConfiguration_</td><td>N</td><td/><td/><td>ISProductConfiguration</td><td>1</td><td>Text</td><td/><td>Foreign key into the ISProductConfiguration table.</td></row>
-		<row><td>ISProductConfigurationProperty</td><td>Property</td><td>N</td><td/><td/><td>Property</td><td>1</td><td>Text</td><td/><td>Product Congiuration property name</td></row>
+		<row><td>ISProductConfigurationProperty</td><td>Property</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>Product Congiuration property name</td></row>
 		<row><td>ISProductConfigurationProperty</td><td>Value</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>String value for property. Never null or empty.</td></row>
 		<row><td>ISRelease</td><td>Attributes</td><td>N</td><td/><td/><td/><td/><td/><td/><td>Bitfield holding boolean values for various release attributes.</td></row>
 		<row><td>ISRelease</td><td>BuildLocation</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>Build location.</td></row>
@@ -5316,7 +5435,39 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISSQLScriptReplace</td><td>ISSQLScriptReplace</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Primary key used to identify a particular ISSQLScriptReplace record.</td></row>
 		<row><td>ISSQLScriptReplace</td><td>Replace</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>ISSQLScriptReplace</td><td>Search</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISScheduledTasks</td><td>Arguments</td><td>Y</td><td/><td/><td/><td/><td>Formatted</td><td/><td>An optional value that specifies the command line arguments for the program specified with the TaskRun column.</td></row>
+		<row><td>ISScheduledTasks</td><td>Attributes</td><td>Y</td><td/><td/><td/><td/><td/><td/><td>This column contains a bit flag that specifies options for the scheduled task.</td></row>
+		<row><td>ISScheduledTasks</td><td>Comments</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>The optional comment about the task.</td></row>
+		<row><td>ISScheduledTasks</td><td>Component_</td><td>N</td><td/><td/><td>Component</td><td>1</td><td>Identifier</td><td/><td>Required foreign key into the Component Table.</td></row>
+		<row><td>ISScheduledTasks</td><td>Days</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>A value that specifies the day of the week to run the task. Valid values are: MON, TUE, WED, THU, FRI, SAT, SUN and for MONTHLY schedules 1 - 31 (days of the month). The wildcard character (*) specifies all days.</td></row>
+		<row><td>ISScheduledTasks</td><td>EndDate</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Specifies the last date that the task is scheduled to run.</td></row>
+		<row><td>ISScheduledTasks</td><td>ISScheduledTasks</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Primary key used to identify a particular ISScheduledTasks record.</td></row>
+		<row><td>ISScheduledTasks</td><td>IdleTime</td><td>Y</td><td/><td/><td/><td/><td/><td/><td>A value that specifies the amount of idle time to wait before running a scheduled ONIDLE task. The valid range is 1 - 999 minutes.</td></row>
+		<row><td>ISScheduledTasks</td><td>Modifier</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>A value that refines the schedule type to allow for finer control over the schedule recurrence.</td></row>
+		<row><td>ISScheduledTasks</td><td>Months</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>A value that specifies months of the year. Defaults to the first day of the month. Valid values are: JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, and DEC. The wildcard character (*) specifies all months.</td></row>
+		<row><td>ISScheduledTasks</td><td>Password</td><td>Y</td><td/><td/><td/><td/><td>Formatted</td><td/><td>A value that specifies the password for the user specified with the UserName column.</td></row>
+		<row><td>ISScheduledTasks</td><td>Schedule</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>A value that specifies the schedule frequency. Valid values are: MINUTE, HOURLY, DAILY, WEEKLY, MONTHLY, ONCE, ONLOGON, ONIDLE, and ONEVENT.</td></row>
+		<row><td>ISScheduledTasks</td><td>StartDate</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Specifies the date that the task starts in MM/DD/YYYY format.</td></row>
+		<row><td>ISScheduledTasks</td><td>StartTime</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>A value that specifies the start time to run the scheduled task.</td></row>
+		<row><td>ISScheduledTasks</td><td>TaskName</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>A value that specifies a name which uniquely identifies the scheduled task.</td></row>
+		<row><td>ISScheduledTasks</td><td>TaskRun</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>A value that specifies the path and file name of the task to be run at the scheduled time.</td></row>
+		<row><td>ISScheduledTasks</td><td>UserName</td><td>Y</td><td/><td/><td/><td/><td>Formatted</td><td/><td>A value that specifies the user context under which the task runs.</td></row>
+		<row><td>ISScheduledTasks</td><td>WkDir</td><td>Y</td><td/><td/><td/><td/><td>Identifier</td><td/><td>An optional value that specifies the working directory for the program specified with the TaskRun column.</td></row>
 		<row><td>ISScriptFile</td><td>ISScriptFile</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>This is the full path of the script file. The path portion may be expressed in path variable form.</td></row>
+		<row><td>ISSearchReplace</td><td>Attributes</td><td>N</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISSearchReplace</td><td>ISSearchReplace</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Primary key used to identify a particular ISSearchReplace record.</td></row>
+		<row><td>ISSearchReplace</td><td>ISSearchReplaceSet_</td><td>N</td><td/><td/><td>ISSearchReplaceSet</td><td>1</td><td>Identifier</td><td/><td>Foreign key referencing ISSearchReplaceSet.</td></row>
+		<row><td>ISSearchReplace</td><td>Order</td><td>N</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISSearchReplace</td><td>Replace</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISSearchReplace</td><td>Search</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISSearchReplaceSet</td><td>Attributes</td><td>N</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISSearchReplaceSet</td><td>CodePage</td><td>N</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISSearchReplaceSet</td><td>Component_</td><td>N</td><td/><td/><td>Component</td><td>1</td><td>Identifier</td><td/><td>Foreign key referencing Component that controls the text file change.</td></row>
+		<row><td>ISSearchReplaceSet</td><td>Directory_</td><td>N</td><td/><td/><td>Directory</td><td>1</td><td>Identifier</td><td/><td>Foreign key referencing Directory that contains the text files.</td></row>
+		<row><td>ISSearchReplaceSet</td><td>ExcludeFiles</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISSearchReplaceSet</td><td>ISSearchReplaceSet</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Primary key used to identify a particular ISSearchReplaceSet record.</td></row>
+		<row><td>ISSearchReplaceSet</td><td>IncludeFiles</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ISSearchReplaceSet</td><td>Order</td><td>N</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>ISSelfReg</td><td>CmdLine</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>ISSelfReg</td><td>Cost</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>ISSelfReg</td><td>FileKey</td><td>N</td><td/><td/><td>File</td><td>1</td><td>Identifier</td><td/><td>Foreign key to the file table</td></row>
@@ -5380,6 +5531,12 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISVirtualShortcut</td><td>Name</td><td>N</td><td/><td/><td/><td/><td>Identifier</td><td/><td>Property name</td></row>
 		<row><td>ISVirtualShortcut</td><td>Shortcut_</td><td>N</td><td/><td/><td>Shortcut</td><td>1</td><td>Identifier</td><td/><td>Foreign key into Shortcut table.</td></row>
 		<row><td>ISVirtualShortcut</td><td>Value</td><td>N</td><td/><td/><td/><td/><td/><td/><td>Property value</td></row>
+		<row><td>ISVisualElement</td><td>BackgroundColor</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>Background Color for the tile</td></row>
+		<row><td>ISVisualElement</td><td>File_</td><td>N</td><td/><td/><td>File</td><td>1</td><td>Identifier</td><td/><td>Foreign key into File table.</td></row>
+		<row><td>ISVisualElement</td><td>ForegroundText</td><td>N</td><td/><td/><td/><td/><td>Text</td><td>light;dark</td><td>Text color for the tile</td></row>
+		<row><td>ISVisualElement</td><td>ShowNameOn150x150</td><td>N</td><td/><td/><td/><td/><td>Text</td><td>on;off</td><td>Whether to show the name on a medium-sized square title</td></row>
+		<row><td>ISVisualElement</td><td>Square150x150Logo</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Optional base name for image to show on a medium-sized square tile</td></row>
+		<row><td>ISVisualElement</td><td>Square70x70Logo</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Optional base name for image to show on a small-sized square tile</td></row>
 		<row><td>ISWSEWrap</td><td>Action_</td><td>N</td><td/><td/><td>CustomAction</td><td>1</td><td>Identifier</td><td/><td>Foreign key into CustomAction table</td></row>
 		<row><td>ISWSEWrap</td><td>Name</td><td>N</td><td/><td/><td/><td/><td>Text</td><td/><td>Property associated with this Action</td></row>
 		<row><td>ISWSEWrap</td><td>Value</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>Value associated with this Property</td></row>
@@ -5706,7 +5863,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>UIText</td><td>Text</td><td>Y</td><td/><td/><td/><td/><td>Text</td><td/><td>The localized version of the string.</td></row>
 		<row><td>Upgrade</td><td>ActionProperty</td><td>N</td><td/><td/><td/><td/><td>UpperCase</td><td/><td>The property to set when a product in this set is found.</td></row>
 		<row><td>Upgrade</td><td>Attributes</td><td>N</td><td>0</td><td>2147483647</td><td/><td/><td/><td/><td>The attributes of this product set.</td></row>
-		<row><td>Upgrade</td><td>ISDisplayName</td><td>Y</td><td/><td/><td>ISUpgradeMsiItem</td><td>1</td><td/><td/><td/></row>
+		<row><td>Upgrade</td><td>ISDisplayName</td><td>Y</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>Upgrade</td><td>Language</td><td>Y</td><td/><td/><td/><td/><td>Language</td><td/><td>A comma-separated list of languages for either products in this set or products not in this set.</td></row>
 		<row><td>Upgrade</td><td>Remove</td><td>Y</td><td/><td/><td/><td/><td>Formatted</td><td/><td>The list of features to remove when uninstalling a product from this set.  The default is "ALL".</td></row>
 		<row><td>Upgrade</td><td>UpgradeCode</td><td>N</td><td/><td/><td/><td/><td>Guid</td><td/><td>The UpgradeCode GUID belonging to the products in this set.</td></row>

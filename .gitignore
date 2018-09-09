@@ -234,3 +234,5 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/NetworkAdapterSelector.Setup/NetworkAdapterSelector.Setup Data/*
+/NetworkAdapterSelector.Setup/NetworkAdapterSelector.Setup/*
