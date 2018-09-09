@@ -75,11 +75,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Unmanaged\AddressIn.cs" />
+    <Compile Include="Unmanaged\AddressIn6.cs" />
     <Compile Include="Unmanaged\AddressInfo.cs" />
+    <Compile Include="Unmanaged\IAddressIn.cs" />
+    <Compile Include="Unmanaged\ISocketAddress.cs" />
     <Compile Include="Unmanaged\Library.cs" />
     <Compile Include="Unmanaged\Process.cs" />
     <Compile Include="Unmanaged\ProcessInformation.cs" />
     <Compile Include="Unmanaged\Socket.cs" />
+    <Compile Include="Unmanaged\SocketAddress.cs" />
+    <Compile Include="Unmanaged\SocketAddressIn6.cs" />
     <Compile Include="Unmanaged\SocketAddressIn.cs" />
     <Compile Include="Unmanaged\Window.cs" />
     <Compile Include="WindowTitle.cs" />

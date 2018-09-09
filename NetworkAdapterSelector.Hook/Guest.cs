@@ -11,6 +11,7 @@ using EasyHook;
 using NetworkAdapterSelector.Hook.Unmanaged;
 using Process = System.Diagnostics.Process;
 using Socket = NetworkAdapterSelector.Hook.Unmanaged.Socket;
+using SocketAddress = NetworkAdapterSelector.Hook.Unmanaged.SocketAddress;
 
 namespace NetworkAdapterSelector.Hook
 {
@@ -40,7 +41,11 @@ namespace NetworkAdapterSelector.Hook
         /// <param name="injectionAddress">Address of the injection assemply to be used for child processes</param>
         /// <param name="injectionDelay">Number of milisecons after child process creation to try to inject the code</param>
         /// <param name="isDebug">Indicates if injected code should create a log file and print activity informations</param>
-        public Guest(RemoteHooking.IContext inContext, string adapterId, string injectionAddress, int injectionDelay,
+        public Guest(
+            RemoteHooking.IContext inContext,
+            string adapterId,
+            string injectionAddress,
+            int injectionDelay,
             bool isDebug)
         {
             _injectionAddress = injectionAddress;
@@ -49,22 +54,30 @@ namespace NetworkAdapterSelector.Hook
             _isDebug = isDebug;
         }
 
-        /// <summary>
-        ///     Removes all active hooks
-        /// </summary>
-        ~Guest()
+        private static bool IsIpInRange(IPAddress address, IPAddress lowerRange, IPAddress upperRange)
         {
-            ContinueExecution(() =>
+            var lowerBytes = lowerRange.GetAddressBytes();
+            var upperBytes = upperRange.GetAddressBytes();
+            var addressBytes = address.GetAddressBytes();
+            var lowerBoundary = true;
+            var upperBoundary = true;
+
+            for (var i = 0;
+                i < lowerBytes.Length &&
+                (lowerBoundary || upperBoundary);
+                i++)
             {
-                lock (_hooks)
+                if (lowerBoundary && addressBytes[i] < lowerBytes[i] ||
+                    upperBoundary && addressBytes[i] > upperBytes[i])
                 {
-                    foreach (var localHook in _hooks)
-                    {
-                        ContinueExecution(() => localHook.Dispose());
-                    }
-                    _hooks.Clear();
+                    return false;
                 }
-            });
+
+                lowerBoundary &= addressBytes[i] == lowerBytes[i];
+                upperBoundary &= addressBytes[i] == upperBytes[i];
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -75,7 +88,11 @@ namespace NetworkAdapterSelector.Hook
         /// <param name="injectionAddress">Address of the injection assemply to be used for child processes</param>
         /// <param name="injectionDelay">Number of milisecons after child process creation to try to inject the code</param>
         /// <param name="isDebug">Indicates if injected code should create a log file and print activity informations</param>
-        public void Run(RemoteHooking.IContext inContext, string injectionAddress, string adapterId, int injectionDelay,
+        public void Run(
+            RemoteHooking.IContext inContext,
+            string injectionAddress,
+            string adapterId,
+            int injectionDelay,
             bool isDebug)
         {
             LoadLibrary(@"ws2_32.dll", () =>
@@ -87,20 +104,36 @@ namespace NetworkAdapterSelector.Hook
 
             AddHook(@"kernel32.dll", "CreateProcessW",
                 new Delegates.CreateProcessDelegate(
-                    (IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes,
-                        IntPtr lpThreadAttributes, bool bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment,
-                        IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, out ProcessInformation lpProcessInformation) =>
-                        Do_CreateProcess(lpApplicationName, lpCommandLine, lpProcessAttributes, lpThreadAttributes,
-                            bInheritHandles, dwCreationFlags, lpEnvironment,
-                            lpCurrentDirectory, lpStartupInfo, out lpProcessInformation, true)));
+                    (
+                            IntPtr lpApplicationName,
+                            IntPtr lpCommandLine,
+                            IntPtr lpProcessAttributes,
+                            IntPtr lpThreadAttributes,
+                            bool bInheritHandles,
+                            uint dwCreationFlags,
+                            IntPtr lpEnvironment,
+                            IntPtr lpCurrentDirectory,
+                            IntPtr lpStartupInfo,
+                            out ProcessInformation lpProcessInformation) =>
+                            Do_CreateProcess(lpApplicationName, lpCommandLine, lpProcessAttributes, lpThreadAttributes,
+                                bInheritHandles, dwCreationFlags, lpEnvironment,
+                                lpCurrentDirectory, lpStartupInfo, out lpProcessInformation, true)));
             AddHook(@"kernel32.dll", "CreateProcessA",
                 new Delegates.CreateProcessDelegate(
-                    (IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes,
-                        IntPtr lpThreadAttributes, bool bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment,
-                        IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, out ProcessInformation lpProcessInformation) =>
-                        Do_CreateProcess(lpApplicationName, lpCommandLine, lpProcessAttributes, lpThreadAttributes,
-                            bInheritHandles, dwCreationFlags, lpEnvironment,
-                            lpCurrentDirectory, lpStartupInfo, out lpProcessInformation, false)));
+                    (
+                            IntPtr lpApplicationName,
+                            IntPtr lpCommandLine,
+                            IntPtr lpProcessAttributes,
+                            IntPtr lpThreadAttributes,
+                            bool bInheritHandles,
+                            uint dwCreationFlags,
+                            IntPtr lpEnvironment,
+                            IntPtr lpCurrentDirectory,
+                            IntPtr lpStartupInfo,
+                            out ProcessInformation lpProcessInformation) =>
+                            Do_CreateProcess(lpApplicationName, lpCommandLine, lpProcessAttributes, lpThreadAttributes,
+                                bInheritHandles, dwCreationFlags, lpEnvironment,
+                                lpCurrentDirectory, lpStartupInfo, out lpProcessInformation, false)));
 
             // Ansi version of the SetWindowText method
             AddHook(@"user32.dll", "SetWindowTextA",
@@ -123,12 +156,14 @@ namespace NetworkAdapterSelector.Hook
                         return;
                     }
                 }
+
                 try
                 {
                     // Get the host process
                     var currentProcess = Process.GetCurrentProcess();
                     // We do care only about the main window
                     var mainWindowHandler = currentProcess.MainWindowHandle;
+
                     if (mainWindowHandler != IntPtr.Zero && !string.IsNullOrEmpty(currentProcess.MainWindowTitle))
                     {
                         if (_activeWindow != mainWindowHandler)
@@ -137,9 +172,11 @@ namespace NetworkAdapterSelector.Hook
                             ContinueExecution(() => WindowTitle.CleanWindowsTitle(_activeWindow));
                             _activeWindow = mainWindowHandler;
                         }
+
                         // Making sure that our special text is in the title bar
                         WindowTitle.AppendWindowTitle(_activeWindow, GenerateCaptionText());
                     }
+
                     Thread.Sleep(300);
                 }
                 catch (Exception e)
@@ -150,20 +187,9 @@ namespace NetworkAdapterSelector.Hook
                     {
                         DebugMessage(e.ToString());
                     }
+
                     Thread.Sleep(1000);
                 }
-            }
-        }
-
-        private void LoadLibrary(string libraryName, Action code)
-        {
-            // Forcing the hook by pre-loading the desired library
-            var library = Library.LoadLibrary(libraryName);
-            code();
-            // Unload the library if only we were the ones loading it for the first time
-            if (!library.Equals(IntPtr.Zero))
-            {
-                Library.FreeLibrary(library);
             }
         }
 
@@ -174,8 +200,12 @@ namespace NetworkAdapterSelector.Hook
                 var localHook = LocalHook.Create(LocalHook.GetProcAddress(libName, entryPoint), inNewProc, null);
                 // Exclude current thread (EasyHook)
                 localHook.ThreadACL.SetExclusiveACL(new[] {0});
+
                 lock (_hooks)
+                {
                     _hooks.Add(localHook);
+                }
+
                 DebugMessage(entryPoint + "@" + libName + " Hooked Successfully");
             }
             catch (Exception e)
@@ -185,89 +215,229 @@ namespace NetworkAdapterSelector.Hook
             }
         }
 
-        private string GenerateCaptionText()
+        private SocketError BindSocket(IntPtr socket, ref ISocketAddress address)
         {
-            var networkInterface = GetNetworkInterface();
-            var networkAddressV4 = GetNetworkInterfaceIPAddress(AddressFamily.InterNetwork);
-            var networkAddressV6 = GetNetworkInterfaceIPAddress(AddressFamily.InterNetworkV6);
-            if (networkInterface == null || (networkAddressV4 == null && networkAddressV6 == null))
-            {
-                return null;
-            }
-            return "[" + networkInterface.Name + " - " + (networkAddressV4 ?? networkAddressV6) + "]";
-        }
-
-        private NetworkInterface GetNetworkInterface()
-        {
-            return NetworkInterface.GetAllNetworkInterfaces()
-                .SingleOrDefault(
-                    @interface =>
-                        @interface.Id.Equals(_adapterId, StringComparison.CurrentCultureIgnoreCase) &&
-                        @interface.OperationalStatus == OperationalStatus.Up);
-        }
-
-        private IPAddress GetNetworkInterfaceIPAddress(AddressFamily family)
-        {
-            return GetNetworkInterface()?.GetIPProperties()
-                .UnicastAddresses.SingleOrDefault(
-                    information => information.Address.AddressFamily == family)?.Address;
-        }
-
-        private bool BindSocket(IntPtr socket, AddressFamily addressFamily, IPAddress ipAddress, int portNumber = 0)
-        {
-            switch (addressFamily)
+            switch (address.Family)
             {
                 case AddressFamily.InterNetwork:
-                    if (ipAddress.Equals(IPAddress.Any))
+
+                    if (address.Address.IPAddress.Equals(IPAddress.Any))
                     {
-                        return true;
+                        return SocketError.Success;
                     }
-                    if (IsIpInRange(ipAddress, IPAddress.Parse("127.0.0.0"), IPAddress.Parse("127.255.255.255")))
+
+                    if (IsIpInRange(address.Address.IPAddress, IPAddress.Parse("127.0.0.0"),
+                        IPAddress.Parse("127.255.255.255")))
                     {
-                        return true; // Loopback
+                        return SocketError.Success; // Loopback
                     }
-                    if (IsIpInRange(ipAddress, IPAddress.Parse("10.0.0.0"), IPAddress.Parse("10.255.255.255")))
+
+                    if (IsIpInRange(address.Address.IPAddress, IPAddress.Parse("10.0.0.0"),
+                        IPAddress.Parse("10.255.255.255")))
                     {
-                        return true; // Private Network
+                        return SocketError.Success; // Private Network
                     }
-                    if (IsIpInRange(ipAddress, IPAddress.Parse("172.16.0.0"), IPAddress.Parse("172.31.255.255")))
+
+                    if (IsIpInRange(address.Address.IPAddress, IPAddress.Parse("172.16.0.0"),
+                        IPAddress.Parse("172.31.255.255")))
                     {
-                        return true; // Private Network
+                        return SocketError.Success; // Private Network
                     }
-                    if (IsIpInRange(ipAddress, IPAddress.Parse("192.168.0.0"), IPAddress.Parse("192.168.255.255")))
+
+                    if (IsIpInRange(address.Address.IPAddress, IPAddress.Parse("192.168.0.0"),
+                        IPAddress.Parse("192.168.255.255")))
                     {
-                        return true; // Private Network
+                        return SocketError.Success; // Private Network
                     }
-                    if (IsIpInRange(ipAddress, IPAddress.Parse("224.0.0.0"), IPAddress.Parse("239.255.255.255")))
+
+                    if (IsIpInRange(address.Address.IPAddress, IPAddress.Parse("169.254.1.0"),
+                        IPAddress.Parse("169.254.254.255")))
                     {
-                        return true; // Multicast
+                        return SocketError.Success; // Link Local Network
                     }
-                    var networkIp = GetNetworkInterfaceIPAddress(addressFamily);
-                    if (networkIp == null)
+
+                    if (IsIpInRange(address.Address.IPAddress, IPAddress.Parse("224.0.0.0"),
+                        IPAddress.Parse("239.255.255.255")))
                     {
-                        return false;
+                        return SocketError.Success; // Multicast
                     }
-                    if (networkIp.Equals(ipAddress))
+
+                    break;
+                case AddressFamily.InterNetworkV6:
+
+                    if (address.Address.IPAddress.Equals(IPAddress.IPv6Any))
                     {
-                        return true;
+                        return SocketError.Success;
                     }
+
+                    if (address.Address.IPAddress.Equals(IPAddress.IPv6Loopback))
+                    {
+                        return SocketError.Success; // Loopback
+                    }
+
+                    if (IsIpInRange(address.Address.IPAddress,
+                        IPAddress.Parse("fc00:0000:0000:0000:0000:0000:0000:0000"),
+                        IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")))
+                    {
+                        return SocketError.Success; // Unique Local Addresses, Private networks, Multicast
+                    }
+
+                    //if (((address as SocketAddressIn6?)?.ScopeId ?? 0) > 0)
+                    //{
+                    //    return true; // Includes explicit interface?
+                    //}
+                    break;
+                default:
+
+                    return SocketError.Success;
+            }
+
+            var networkIPAddress = GetNetworkInterfaceIPAddress(address.Family);
+
+            if (networkIPAddress == null)
+            {
+                return SocketError.SocketError;
+            }
+
+            if (networkIPAddress.Equals(address.Address.IPAddress))
+            {
+                return SocketError.Success;
+            }
+
+            switch (networkIPAddress.AddressFamily)
+            {
+                case AddressFamily.InterNetwork:
                     var bindIn = new SocketAddressIn
                     {
-                        IPAddress = new SocketAddressIn.AddressIn {IpAddress = networkIp},
-                        Family = networkIp.AddressFamily,
-                        Port = portNumber
+                        Address = new AddressIn {IPAddress = networkIPAddress},
+                        Family = networkIPAddress.AddressFamily,
+                        Port = address.Port
                     };
-                    var addressIn = bindIn;
-                    ContinueExecution(() => DebugMessage("Auto Bind: " + addressIn.IPAddress.IpAddress));
-                    return Socket.Bind(socket, ref bindIn, Marshal.SizeOf(bindIn)) == SocketError.Success;
+
+                    var tmpAddress = address;
+                    ContinueExecution(() => DebugMessage("Bind: " + tmpAddress.Address.IPAddress));
+                    address = bindIn;
+
+                    return Socket.Bind(socket, ref bindIn, Marshal.SizeOf(bindIn));
+                case AddressFamily.InterNetworkV6:
+                    var bindIn6 = new SocketAddressIn6
+                    {
+                        Address = new AddressIn6 {IPAddress = networkIPAddress},
+                        Family = networkIPAddress.AddressFamily,
+                        Port = address.Port,
+                        ScopeId = (address as SocketAddressIn6?)?.ScopeId ?? 0,
+                        FlowInfo = (address as SocketAddressIn6?)?.FlowInfo ?? 0
+                    };
+
+                    var tmpAddress6 = address;
+                    ContinueExecution(() => DebugMessage("Bind: " + tmpAddress6.Address.IPAddress));
+                    address = bindIn6;
+
+                    return Socket.Bind(socket, ref bindIn6, Marshal.SizeOf(bindIn6));
                 default:
-                    return true;
+
+                    return SocketError.Success;
             }
         }
 
-        private bool Do_CreateProcess(IntPtr lpApplicationName, IntPtr lpCommandLine, IntPtr lpProcessAttributes,
-            IntPtr lpThreadAttributes, bool bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment,
-            IntPtr lpCurrentDirectory, IntPtr lpStartupInfo, out ProcessInformation lpProcessInformation, bool unicode)
+        private void ContinueExecution(Action code)
+        {
+            try
+            {
+                code();
+            }
+            catch (Exception e)
+            {
+                DebugMessage(e.ToString());
+            }
+        }
+
+
+        private void DebugMessage(string p)
+        {
+            try
+            {
+                if (!_isDebug)
+                {
+                    return;
+                }
+
+                var process = Process.GetCurrentProcess();
+                File.AppendAllText(
+                    Path.Combine(Path.GetTempPath(),
+                        "NetworkAdapterSelector-" + process.ProcessName + "[" + process.Id + "].log"),
+                    string.Format("{0}{1}{2}{1}", new string('-', 30), Environment.NewLine, p));
+            }
+            catch
+            {
+                // ignored
+            }
+        }
+
+        private SocketError Do_Bind(IntPtr socket, IntPtr address, int addressSize)
+        {
+            var socketAddress = GetSocketAddress(address);
+
+            var temAddress = socketAddress;
+            ContinueExecution(
+                () => DebugMessage("Bind: " + temAddress.Address.IPAddress + ":" + temAddress.Port));
+
+            return BindSocket(socket, ref socketAddress);
+        }
+
+        private SocketError Do_Connect(IntPtr socket, IntPtr address, int addressSize)
+        {
+            var socketAddress = GetSocketAddress(address);
+
+            var tmpAddress = socketAddress;
+            ContinueExecution(
+                () => DebugMessage("Connect: " + tmpAddress.Address.IPAddress + ":" + tmpAddress.Port));
+
+            var bindResult = BindSocket(socket, ref socketAddress);
+
+            if (bindResult != SocketError.Success)
+            {
+                if (bindResult != SocketError.SocketError)
+                {
+                    DebugMessage(Socket.WSAGetLastError().ToString());
+                }
+
+                return SocketError.SocketError;
+            }
+
+            var returnValue = SocketError.SocketError;
+
+            if (socketAddress.Family == AddressFamily.InterNetwork)
+            {
+                var tmpAddress4 = (SocketAddressIn) socketAddress;
+                returnValue = Socket.Connect(socket, ref tmpAddress4, addressSize);
+            }
+            else if (socketAddress.Family == AddressFamily.InterNetworkV6)
+            {
+                var tmpAddress6 = (SocketAddressIn6) socketAddress;
+                returnValue = Socket.Connect(socket, ref tmpAddress6, addressSize);
+            }
+
+            if (returnValue == SocketError.SocketError && Socket.WSAGetLastError() == SocketError.Success)
+            {
+                returnValue = SocketError.Success;
+            }
+
+            return returnValue;
+        }
+
+        private bool Do_CreateProcess(
+            IntPtr lpApplicationName,
+            IntPtr lpCommandLine,
+            IntPtr lpProcessAttributes,
+            IntPtr lpThreadAttributes,
+            bool bInheritHandles,
+            uint dwCreationFlags,
+            IntPtr lpEnvironment,
+            IntPtr lpCurrentDirectory,
+            IntPtr lpStartupInfo,
+            out ProcessInformation lpProcessInformation,
+            bool unicode)
         {
             var res = unicode
                 ? Unmanaged.Process.CreateProcessW(lpApplicationName, lpCommandLine, lpProcessAttributes,
@@ -292,59 +462,63 @@ namespace NetworkAdapterSelector.Hook
                             _injectionAddress, _injectionDelay, _isDebug);
                     });
             }).Start();
+
             return res;
         }
 
         private bool Do_SetWindowText(IntPtr windowHandle, IntPtr text, bool unicode)
         {
             var title = unicode ? Marshal.PtrToStringUni(text) : Marshal.PtrToStringAnsi(text);
+
             if (!string.IsNullOrEmpty(title) && windowHandle.Equals(_activeWindow))
             {
                 DebugMessage("SetWindowText: " + windowHandle + " - " + title);
                 title = WindowTitle.AppendWindowTitle(title, GenerateCaptionText());
             }
+
             return Window.SetWindowText(windowHandle, title);
         }
 
-        private SocketError Do_Bind(IntPtr socket, ref SocketAddressIn address, int addressSize)
+
+        private SocketError Do_WsaConnect(
+            IntPtr socket,
+            IntPtr address,
+            int addressSize,
+            IntPtr inBuffer,
+            IntPtr outBuffer,
+            IntPtr sQos,
+            IntPtr gQos)
         {
-            var addressIn = address;
+            var socketAddress = GetSocketAddress(address);
+
+            var tmpAddress = socketAddress;
             ContinueExecution(
-                () => DebugMessage("Bind: " + addressIn.IPAddress.IpAddress + ":" + addressIn.Port));
+                () => DebugMessage("WsaConnect: " + tmpAddress.Address.IPAddress + ":" + tmpAddress.Port));
 
-            var networkIp = GetNetworkInterfaceIPAddress(address.Family);
-            if (networkIp != null && !address.IPAddress.IpAddress.Equals(IPAddress.Any) &&
-                !address.IPAddress.IpAddress.Equals(networkIp) &&
-                !IsIpInRange(address.IPAddress.IpAddress, IPAddress.Parse("127.0.0.0"),
-                    IPAddress.Parse("127.255.255.255")))
+            var bindResult = BindSocket(socket, ref socketAddress);
+
+            if (bindResult != SocketError.Success)
             {
-                address.IPAddress.IpAddress = networkIp;
-                ContinueExecution(() => DebugMessage("Modified Bind: " + addressIn.IPAddress.IpAddress));
-            }
-            return Socket.Bind(socket, ref address, addressSize);
-        }
+                if (bindResult != SocketError.SocketError)
+                {
+                    DebugMessage(Socket.WSAGetLastError().ToString());
+                }
 
-
-        private SocketError Do_WsaConnect(IntPtr socket, ref SocketAddressIn address, int addressSize, IntPtr inBuffer,
-            IntPtr outBuffer, IntPtr sQos, IntPtr gQos)
-        {
-            var addressIn = address;
-            ContinueExecution(() => DebugMessage("WsaConnect: " + addressIn.IPAddress.IpAddress));
-
-            if (!BindSocket(socket, address.Family, address.IPAddress.IpAddress))
-            {
-                DebugMessage(Socket.WSAGetLastError().ToString());
                 return SocketError.SocketError;
             }
 
-            var returnValue = Socket.WSAConnect(socket, ref address, addressSize, inBuffer, outBuffer, sQos, gQos);
-            //if (returnValue == SocketError.SocketError
-            //    && (Socket.WSAGetLastError() == SocketError.WouldBlock
-            //        || Socket.WSAGetLastError() == SocketError.Success))
-            //{
-            //    // Non blocking mode
-            //    returnValue = SocketError.Success;
-            //}
+            var returnValue = SocketError.SocketError;
+
+            if (socketAddress.Family == AddressFamily.InterNetwork)
+            {
+                var tmpAddress4 = (SocketAddressIn) socketAddress;
+                returnValue = Socket.WSAConnect(socket, ref tmpAddress4, addressSize, inBuffer, outBuffer, sQos, gQos);
+            }
+            else if (socketAddress.Family == AddressFamily.InterNetworkV6)
+            {
+                var tmpAddress6 = (SocketAddressIn6) socketAddress;
+                returnValue = Socket.WSAConnect(socket, ref tmpAddress6, addressSize, inBuffer, outBuffer, sQos, gQos);
+            }
 
             if (returnValue == SocketError.SocketError && Socket.WSAGetLastError() == SocketError.Success)
             {
@@ -354,91 +528,103 @@ namespace NetworkAdapterSelector.Hook
             return returnValue;
         }
 
-        private SocketError Do_Connect(IntPtr socket, ref SocketAddressIn address, int addressSize)
+        private string GenerateCaptionText()
         {
-            var addressIn = address;
-            ContinueExecution(() => DebugMessage("Connect: " + addressIn.IPAddress.IpAddress));
+            var networkInterface = GetNetworkInterface();
+            var networkAddressV4 = GetNetworkInterfaceIPAddress(AddressFamily.InterNetwork);
+            var networkAddressV6 = GetNetworkInterfaceIPAddress(AddressFamily.InterNetworkV6);
 
-            if (!BindSocket(socket, address.Family, address.IPAddress.IpAddress))
+            if (networkInterface == null || networkAddressV4 == null && networkAddressV6 == null)
             {
-                DebugMessage(Socket.WSAGetLastError().ToString());
-                return SocketError.SocketError;
+                return null;
             }
 
-            var returnValue = Socket.Connect(socket, ref address, addressSize);
-            //if (returnValue == SocketError.SocketError
-            //    && (Socket.WSAGetLastError() == SocketError.WouldBlock
-            //        || Socket.WSAGetLastError() == SocketError.Success))
-            //{
-            //    // Non blocking mode
-            //    returnValue = SocketError.Success;
-            //}
-
-            if (returnValue == SocketError.SocketError && Socket.WSAGetLastError() == SocketError.Success)
-            {
-                returnValue = SocketError.Success;
-            }
-
-            return returnValue;
+            return "[" + networkInterface.Name + " - " + (networkAddressV4 ?? networkAddressV6) + "]";
         }
 
-        private static bool IsIpInRange(IPAddress address, IPAddress lowerRange, IPAddress upperRange)
+        private NetworkInterface GetNetworkInterface()
         {
-            var lowerBytes = lowerRange.GetAddressBytes();
-            var upperBytes = upperRange.GetAddressBytes();
-            var addressBytes = address.GetAddressBytes();
-            var lowerBoundary = true;
-            var upperBoundary = true;
+            return NetworkInterface.GetAllNetworkInterfaces()
+                .SingleOrDefault(
+                    @interface =>
+                        @interface.Id.Equals(_adapterId, StringComparison.CurrentCultureIgnoreCase) &&
+                        @interface.OperationalStatus == OperationalStatus.Up);
+        }
 
-            for (var i = 0;
-                i < lowerBytes.Length &&
-                (lowerBoundary || upperBoundary);
-                i++)
+        private IPAddress GetNetworkInterfaceIPAddress(AddressFamily preferredFamily)
+        {
+            var addresses = GetNetworkInterface()?.GetIPProperties()
+                .UnicastAddresses;
+
+            return addresses?.SingleOrDefault(
+                       information => information.Address.AddressFamily == preferredFamily)?.Address ??
+                   addresses?.SingleOrDefault(information =>
+                       information.Address.AddressFamily == AddressFamily.InterNetwork ||
+                       information.Address.AddressFamily == AddressFamily.InterNetworkV6)?.Address;
+        }
+
+        private ISocketAddress GetSocketAddress(IntPtr socketAddressPointer)
+        {
+            var type = GetSocketAddressType(socketAddressPointer);
+
+            if (type == null)
             {
-                if ((lowerBoundary && addressBytes[i] < lowerBytes[i]) ||
-                    (upperBoundary && addressBytes[i] > upperBytes[i]))
+                return null;
+            }
+
+            return (ISocketAddress) Marshal.PtrToStructure(socketAddressPointer, type);
+        }
+
+        private Type GetSocketAddressType(IntPtr socketAddressPointer)
+        {
+            var socketAddress = (SocketAddress) Marshal.PtrToStructure(socketAddressPointer, typeof(SocketAddress));
+
+            switch (socketAddress.Family)
+            {
+                case AddressFamily.InterNetwork:
                 {
-                    return false;
+                    return typeof(SocketAddressIn);
                 }
-
-                lowerBoundary &= (addressBytes[i] == lowerBytes[i]);
-                upperBoundary &= (addressBytes[i] == upperBytes[i]);
-            }
-
-            return true;
-        }
-
-        private void ContinueExecution(Action code)
-        {
-            try
-            {
-                code();
-            }
-            catch (Exception e)
-            {
-                DebugMessage(e.ToString());
-            }
-        }
-
-
-        private void DebugMessage(string p)
-        {
-            try
-            {
-                if (!_isDebug)
+                case AddressFamily.InterNetworkV6:
                 {
-                    return;
+                    return typeof(SocketAddressIn6);
                 }
-                var process = Process.GetCurrentProcess();
-                File.AppendAllText(
-                    Path.Combine(Path.GetTempPath(),
-                        "NetworkAdapterSelector-" + process.ProcessName + "[" + process.Id + "].log"),
-                    string.Format("{0}{1}{2}{1}", new string('-', 30), Environment.NewLine, p));
+                default:
+
+                    return null;
             }
-            catch
+        }
+
+        private void LoadLibrary(string libraryName, Action code)
+        {
+            // Forcing the hook by pre-loading the desired library
+            var library = Library.LoadLibrary(libraryName);
+            code();
+
+            // Unload the library if only we were the ones loading it for the first time
+            if (!library.Equals(IntPtr.Zero))
             {
-                // ignored
+                Library.FreeLibrary(library);
             }
+        }
+
+        /// <summary>
+        ///     Removes all active hooks
+        /// </summary>
+        ~Guest()
+        {
+            ContinueExecution(() =>
+            {
+                lock (_hooks)
+                {
+                    foreach (var localHook in _hooks)
+                    {
+                        ContinueExecution(() => localHook.Dispose());
+                    }
+
+                    _hooks.Clear();
+                }
+            });
         }
     }
 }

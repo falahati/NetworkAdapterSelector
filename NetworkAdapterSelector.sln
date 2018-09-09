@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkAdapterSelector.Hook", "NetworkAdapterSelector.Hook\NetworkAdapterSelector.Hook.csproj", "{DA87AB72-4183-4D28-ABD9-97B898AF780A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -11,12 +11,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkAdapterSelector.ShellExtension", "NetworkAdapterSelector.ShellExtension\NetworkAdapterSelector.ShellExtension.csproj", "{FBC0EA17-BB03-426B-864B-A0289CB00609}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkAdapterSelector.TestApp", "NetworkAdapterSelector.TestApp\NetworkAdapterSelector.TestApp.csproj", "{8C8BFF1F-D54F-474B-8652-17A44046998A}"
-EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "NetworkAdapterSelector.Setup", "NetworkAdapterSelector.Setup\NetworkAdapterSelector.Setup.isproj", "{E32A0D39-5282-467D-8C55-10EA46C0B0C3}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FBC0EA17-BB03-426B-864B-A0289CB00609} = {FBC0EA17-BB03-426B-864B-A0289CB00609}
-		{DA87AB72-4183-4D28-ABD9-97B898AF780A} = {DA87AB72-4183-4D28-ABD9-97B898AF780A}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,11 +30,11 @@ Global
 		{8C8BFF1F-D54F-474B-8652-17A44046998A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C8BFF1F-D54F-474B-8652-17A44046998A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C8BFF1F-D54F-474B-8652-17A44046998A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E32A0D39-5282-467D-8C55-10EA46C0B0C3}.Debug|Any CPU.ActiveCfg = SingleImage
-		{E32A0D39-5282-467D-8C55-10EA46C0B0C3}.Release|Any CPU.ActiveCfg = SingleImage
-		{E32A0D39-5282-467D-8C55-10EA46C0B0C3}.Release|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86EAD9D9-67C9-492C-A4F8-F89C19B39CBD}
 	EndGlobalSection
 EndGlobal
