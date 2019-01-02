@@ -430,7 +430,7 @@ namespace NetworkAdapterSelector.Hook
                     return;
                 }
 
-                var space = Math.Min(15 - scope.Length, 0);
+                var space = Math.Max(15 - scope.Length, 0);
 
                 message = string.Format(
                     "{0:s} - [`{1}`] : {2}{3}",
