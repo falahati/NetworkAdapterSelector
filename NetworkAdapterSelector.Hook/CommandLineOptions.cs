@@ -51,7 +51,7 @@ namespace NetworkAdapterSelector.Hook
         }
 
         [Option('t', "delay", Required = false, HelpText = "Delay in milliseconds before trying to inject the code.",
-            Default = 1000)]
+            Default = 0)]
         public int Delay { get; set; }
 
         [Option('e', "execute", Required = false, HelpText = "Address of the executable find to start.")]

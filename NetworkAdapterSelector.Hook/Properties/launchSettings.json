@@ -1,8 +1,16 @@
 {
   "profiles": {
-    "NetworkAdapterSelector.Hook": {
+    "Chrome": {
       "commandName": "Project",
-      "commandLineArgs": "-d -n \"{39F954B1-F286-4156-8AF0-88FD057B3B91}\" -e \"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" -c \"--profile-directory=Profile --enable-logging --v=1\" -t 1000"
+      "commandLineArgs": "-d -n \"{39F954B1-F286-4156-8AF0-88FD057B3B91}\" -e \"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" -c \"--profile-directory=Profile --enable-logging --v=1\" -t 0"
+    },
+    "NetworkAdapterSelector.TestApp": {
+      "commandName": "Project",
+      "commandLineArgs": "-d -n \"{39F954B1-F286-4156-8AF0-88FD057B3B91}\" -e \"NetworkAdapterSelector.TestApp.exe\" -t 0"
+    },
+    "Firefox": {
+      "commandName": "Project",
+      "commandLineArgs": "-d -n \"{39F954B1-F286-4156-8AF0-88FD057B3B91}\" -e \"C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe\" -t 0"
     }
   }
 }
