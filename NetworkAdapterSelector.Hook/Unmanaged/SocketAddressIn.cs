@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     [StructLayout(LayoutKind.Explicit, Size = 16)]
     internal struct SocketAddressIn : ISocketAddress
@@ -30,7 +30,7 @@ namespace NetworkAdapterSelector.Hook.Unmanaged
         }
 
         /// <inheritdoc />
-        public AddressFamily Family
+        public AddressFamily AddressFamily
         {
             get => (AddressFamily) family;
 

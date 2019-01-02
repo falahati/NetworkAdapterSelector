@@ -1,14 +1,13 @@
 ﻿using System.Net;
 using System.Runtime.InteropServices;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     [StructLayout(LayoutKind.Explicit, Size = 16)]
-    public struct AddressIn6 : IAddressIn
+    internal struct AddressIn6 : IAddressIn
     {
-        [FieldOffset(0)]
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
-        internal byte[] Bytes;
+        [FieldOffset(0)] [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+        private byte[] Bytes;
 
         public IPAddress IPAddress
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     internal static class Library
     {

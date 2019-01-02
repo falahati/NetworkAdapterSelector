@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     internal static class Window
     {

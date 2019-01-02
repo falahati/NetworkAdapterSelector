@@ -1,13 +1,11 @@
 ﻿using System.Net.Sockets;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     internal interface ISocketAddress
     {
-        AddressFamily Family { get; set; }
-
-        int Port { get; set; }
-
         IAddressIn Address { get; }
+        AddressFamily AddressFamily { get; set; }
+        int Port { get; set; }
     }
 }

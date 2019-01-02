@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
-using NetworkAdapterSelector.Hook.Unmanaged;
+using NetworkAdapterSelector.Hook.UnManaged;
 
 namespace NetworkAdapterSelector.Hook
 {
@@ -15,22 +15,22 @@ namespace NetworkAdapterSelector.Hook
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
         public delegate bool CreateProcessDelegate(
-            IntPtr lpApplicationName,
-            IntPtr lpCommandLine,
-            IntPtr lpProcessAttributes,
-            IntPtr lpThreadAttributes,
-            bool bInheritHandles,
-            uint dwCreationFlags,
-            IntPtr lpEnvironment,
-            IntPtr lpCurrentDirectory,
-            IntPtr lpStartupInfo,
-            out ProcessInformation lpProcessInformation);
+            IntPtr applicationName,
+            IntPtr commandLine,
+            IntPtr processAttributes,
+            IntPtr threadAttributes,
+            bool inheritHandles,
+            uint creationFlags,
+            IntPtr environment,
+            IntPtr currentDirectory,
+            IntPtr startupInfo,
+            out ProcessInformation processInformation);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
         public delegate bool SetWindowTextDelegate(IntPtr windowHandle, IntPtr textPointer);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
-        public delegate SocketError WsaConnectDelegate(
+        public delegate SocketError WSAConnectDelegate(
             IntPtr socket, IntPtr address, int addressSize, IntPtr inBuffer, IntPtr outBuffer, IntPtr sQos,
             IntPtr gQos);
     }

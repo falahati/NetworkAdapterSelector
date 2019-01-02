@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     [StructLayout(LayoutKind.Explicit, Size = 28)]
     internal struct SocketAddressIn6 : ISocketAddress
@@ -37,7 +37,7 @@ namespace NetworkAdapterSelector.Hook.Unmanaged
         }
 
         /// <inheritdoc />
-        public AddressFamily Family
+        public AddressFamily AddressFamily
         {
             get => (AddressFamily) family;
 

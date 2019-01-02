@@ -1,34 +1,36 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     internal static class Process
     {
         [DllImport("kernel32", SetLastError = true)]
+        // ReSharper disable once TooManyArguments
         public static extern bool CreateProcessW(
-            IntPtr lpApplicationName,
-            IntPtr lpCommandLine,
-            IntPtr lpProcessAttributes,
-            IntPtr lpThreadAttributes,
-            bool bInheritHandles,
-            uint dwCreationFlags,
-            IntPtr lpEnvironment,
-            IntPtr lpCurrentDirectory,
-            IntPtr lpStartupInfo,
-            out ProcessInformation lpProcessInformation);
+            IntPtr applicationName,
+            IntPtr commandLine,
+            IntPtr processAttributes,
+            IntPtr threadAttributes,
+            bool inheritHandles,
+            uint creationFlags,
+            IntPtr environment,
+            IntPtr currentDirectory,
+            IntPtr startupInfo,
+            out ProcessInformation processInformation);
 
         [DllImport("kernel32", SetLastError = true)]
+        // ReSharper disable once TooManyArguments
         public static extern bool CreateProcessA(
-            IntPtr lpApplicationName,
-            IntPtr lpCommandLine,
-            IntPtr lpProcessAttributes,
-            IntPtr lpThreadAttributes,
-            bool bInheritHandles,
-            uint dwCreationFlags,
-            IntPtr lpEnvironment,
-            IntPtr lpCurrentDirectory,
-            IntPtr lpStartupInfo,
-            out ProcessInformation lpProcessInformation);
+            IntPtr applicationName,
+            IntPtr commandLine,
+            IntPtr processAttributes,
+            IntPtr threadAttributes,
+            bool inheritHandles,
+            uint creationFlags,
+            IntPtr environment,
+            IntPtr currentDirectory,
+            IntPtr startupInfo,
+            out ProcessInformation processInformation);
     }
 }

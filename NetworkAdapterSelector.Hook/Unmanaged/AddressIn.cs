@@ -2,12 +2,12 @@
 using System.Net;
 using System.Runtime.InteropServices;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     [StructLayout(LayoutKind.Explicit, Size = 4)]
-    public struct AddressIn : IAddressIn
+    internal struct AddressIn : IAddressIn
     {
-        [FieldOffset(0)] internal uint Value;
+        [FieldOffset(0)] private uint Value;
 
         /// <inheritdoc />
         public IPAddress IPAddress

@@ -236,3 +236,5 @@ _Pvt_Extensions
 .fake/
 /NetworkAdapterSelector.Setup/NetworkAdapterSelector.Setup Data/*
 /NetworkAdapterSelector.Setup/NetworkAdapterSelector.Setup/*
+/NetworkAdapterSelector.Hook/*.exe
+/NetworkAdapterSelector.Hook/*.dll

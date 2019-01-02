@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct ProcessInformation
     {
-        public IntPtr hProcess;
-        public IntPtr hThread;
-        public int dwProcessId;
-        public int dwThreadId;
+        public IntPtr ProcessHandle;
+        public IntPtr ThreadHandle;
+        public int ProcessId;
+        public int ThreadId;
     }
 }

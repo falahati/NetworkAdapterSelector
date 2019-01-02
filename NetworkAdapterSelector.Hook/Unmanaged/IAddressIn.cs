@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace NetworkAdapterSelector.Hook.Unmanaged
+namespace NetworkAdapterSelector.Hook.UnManaged
 {
     internal interface IAddressIn
     {
