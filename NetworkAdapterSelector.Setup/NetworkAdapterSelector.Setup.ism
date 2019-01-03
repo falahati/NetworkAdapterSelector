@@ -1816,14 +1816,14 @@
 	<table name="FeatureComponents">
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>EasyHook</td><td>EasyHook</td></row>
+		<row><td>EasyHook</td><td>EasyHook32</td></row>
+		<row><td>EasyHook</td><td>EasyHook32Svc</td></row>
+		<row><td>EasyHook</td><td>EasyHook64</td></row>
+		<row><td>EasyHook</td><td>EasyHook64Svc</td></row>
+		<row><td>EasyHook</td><td>EasyLoad32</td></row>
+		<row><td>EasyHook</td><td>EasyLoad64</td></row>
 		<row><td>Network_Adapter_Selector</td><td>CommandLine</td></row>
-		<row><td>Network_Adapter_Selector</td><td>EasyHook</td></row>
-		<row><td>Network_Adapter_Selector</td><td>EasyHook32</td></row>
-		<row><td>Network_Adapter_Selector</td><td>EasyHook32Svc</td></row>
-		<row><td>Network_Adapter_Selector</td><td>EasyHook64</td></row>
-		<row><td>Network_Adapter_Selector</td><td>EasyHook64Svc</td></row>
-		<row><td>Network_Adapter_Selector</td><td>EasyLoad32</td></row>
-		<row><td>Network_Adapter_Selector</td><td>EasyLoad64</td></row>
 		<row><td>Network_Adapter_Selector</td><td>NetworkAdapterSelector.Hook</td></row>
 		<row><td>Network_Adapter_Selector</td><td>System.Console</td></row>
 		<row><td>Network_Adapter_Selector</td><td>System.IO</td></row>
@@ -3842,6 +3842,7 @@ QwBvAHAAeQByAGkAZwBoAHQAIAAoAEMAKQAgADIAMAAxADcAIABTAG8AcgBvAHUAcwBoACAARgBhAGwA
 		<row><td>ID_STRING10</td><td>1033</td><td>Helios Display Management</td><td>0</td><td/><td>-987306783</td></row>
 		<row><td>ID_STRING11</td><td>1033</td><td>Windows Explorer Contaxt Menu</td><td>0</td><td/><td>-987331231</td></row>
 		<row><td>ID_STRING12</td><td>1033</td><td>HELIOS~1|Helios Display Management</td><td>0</td><td/><td>-987347678</td></row>
+		<row><td>ID_STRING13</td><td>1033</td><td>NewFeature1</td><td>0</td><td/><td>413598224</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>Helios Display Management</td><td>0</td><td/><td>1411727793</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Network Adapter Selector Installation</td><td>0</td><td/><td>413633089</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Github Issue Tracker</td><td>0</td><td/><td>1411756593</td></row>
