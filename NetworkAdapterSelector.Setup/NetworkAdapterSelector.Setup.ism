@@ -1810,7 +1810,7 @@
 		<row><td>Network_Adapter_Selector</td><td/><td>##ID_STRING10##</td><td/><td>2</td><td>1</td><td>INSTALLDIR</td><td>16</td><td/><td/><td/><td/></row>
 		<row><td>Shell_Extension</td><td>Network_Adapter_Selector</td><td>##ID_STRING11##</td><td/><td>2</td><td>1</td><td>INSTALLDIR</td><td>0</td><td/><td/><td/><td/></row>
 		<row><td>x64</td><td>Network_Adapter_Selector</td><td>##IDS_FEATURE_DISPLAY_NAME4##</td><td/><td>0</td><td>1</td><td>INSTALLDIR</td><td>16</td><td>x64</td><td/><td/><td/></row>
-		<row><td>x86</td><td>Network_Adapter_Selector</td><td>##IDS_FEATURE_DISPLAY_NAME3##</td><td/><td>0</td><td>1</td><td>INSTALLDIR</td><td>16</td><td>x86</td><td/><td/><td/></row>
+		<row><td>x86</td><td>Network_Adapter_Selector</td><td>##IDS_FEATURE_DISPLAY_NAME3##</td><td/><td>0</td><td>1</td><td>INSTALLDIR</td><td>16</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="FeatureComponents">
