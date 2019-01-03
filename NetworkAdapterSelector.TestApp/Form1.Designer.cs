@@ -66,7 +66,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(128, 23);
             this.button3.TabIndex = 2;
-            this.button3.Text = "Download no proxy";
+            this.button3.Text = "Download W/O Proxy";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -77,7 +77,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(128, 23);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Download sys proxy";
+            this.button4.Text = "Download with Proxy";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -99,7 +99,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(128, 23);
             this.button6.TabIndex = 5;
-            this.button6.Text = "Download new thread";
+            this.button6.Text = "Download Async";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -110,7 +110,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(96, 23);
             this.button7.TabIndex = 6;
-            this.button7.Text = "Create Process";
+            this.button7.Text = "Create Child Process";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 

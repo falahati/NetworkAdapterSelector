@@ -35,17 +35,17 @@ namespace NetworkAdapterSelector.TestApp
         private void button3_Click(object sender, EventArgs e)
         {
             var client = new WebClient {Proxy = null};
-            client.DownloadFile("http://google.com", Path.GetTempFileName());
+            var str = client.DownloadString("https://api.myip.com");
             client.Dispose();
-            MessageBox.Show("Downloaded");
+            MessageBox.Show($"Downloaded: {str}");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             var client = new WebClient();
-            client.DownloadFile("http://google.com", Path.GetTempFileName());
+            var str = client.DownloadString("https://api.myip.com");
             client.Dispose();
-            MessageBox.Show("Downloaded");
+            MessageBox.Show($"Downloaded: {str}");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -61,9 +61,9 @@ namespace NetworkAdapterSelector.TestApp
                 {
                     Thread.Sleep(500);
                     var client = new WebClient {Proxy = null};
-                    client.DownloadFile("http://google.com", Path.GetTempFileName());
+                    var str = client.DownloadString("https://api.myip.com");
                     client.Dispose();
-                    MessageBox.Show("Downloaded");
+                    MessageBox.Show($"Downloaded: {str}");
                 }
                 catch (Exception ex)
                 {
