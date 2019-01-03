@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NetworkAdapterSelector.Hook.UnManaged
 {
-    internal static class Window
+    internal static class NativeWindow
     {
         [DllImport("user32", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern int GetWindowText(IntPtr windowHandle, StringBuilder text, int length);

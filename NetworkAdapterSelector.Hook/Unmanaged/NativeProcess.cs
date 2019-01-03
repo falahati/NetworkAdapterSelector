@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using NetworkAdapterSelector.Hook.UnManaged.Structures;
 
 namespace NetworkAdapterSelector.Hook.UnManaged
 {
-    internal static class Process
+    internal static class NativeProcess
     {
         [DllImport("kernel32", SetLastError = true)]
         // ReSharper disable once TooManyArguments

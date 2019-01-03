@@ -1,10 +1,10 @@
 ﻿using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
-namespace NetworkAdapterSelector.Hook.UnManaged
+namespace NetworkAdapterSelector.Hook.UnManaged.Structures
 {
     [StructLayout(LayoutKind.Explicit, Size = 16)]
-    internal struct SocketAddress
+    internal struct SocketAddressBase
     {
         [FieldOffset(0)] private ushort family;
 

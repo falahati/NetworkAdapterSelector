@@ -26,23 +26,23 @@ namespace NetworkAdapterSelector.Hook
 
             return !string.IsNullOrEmpty(text) &&
                    !string.IsNullOrEmpty(title) &&
-                   Window.SetWindowText(windowHandler, AppendWindowTitle(title, text));
+                   NativeWindow.SetWindowText(windowHandler, AppendWindowTitle(title, text));
         }
 
         public static bool CleanWindowsTitle(IntPtr windowHandler)
         {
             var title = GetWindowTitle(windowHandler);
 
-            return !string.IsNullOrEmpty(title) && Window.SetWindowText(windowHandler, title);
+            return !string.IsNullOrEmpty(title) && NativeWindow.SetWindowText(windowHandler, title);
         }
 
         public static string GetWindowTitle(IntPtr windowHandler)
         {
-            if (windowHandler != IntPtr.Zero && Window.IsWindow(windowHandler))
+            if (windowHandler != IntPtr.Zero && NativeWindow.IsWindow(windowHandler))
             {
-                var length = Window.GetWindowTextLength(windowHandler);
+                var length = NativeWindow.GetWindowTextLength(windowHandler);
                 var sb = new StringBuilder(length + 1);
-                Window.GetWindowText(windowHandler, sb, sb.Capacity);
+                NativeWindow.GetWindowText(windowHandler, sb, sb.Capacity);
                 var title = sb.ToString();
 
                 if (title.Contains(Separator))

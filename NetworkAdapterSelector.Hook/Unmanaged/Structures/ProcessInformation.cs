@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace NetworkAdapterSelector.Hook.UnManaged
+namespace NetworkAdapterSelector.Hook.UnManaged.Structures
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct ProcessInformation

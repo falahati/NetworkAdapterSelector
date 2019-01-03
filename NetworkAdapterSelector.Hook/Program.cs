@@ -36,8 +36,6 @@ namespace NetworkAdapterSelector.Hook
                         CommandLineOptions.Default.Debug);
 
                     var process = Process.GetProcessById(processId);
-
-                    process.Exited += (sender, args) => Console.WriteLine("Process died.");
                     
                     Thread.Sleep(2000);
 
@@ -48,7 +46,7 @@ namespace NetworkAdapterSelector.Hook
 
                     if (IsProcessStuckByInjection(process))
                     {
-                        Console.WriteLine("Process stuck in suspended state. Fallback to delayed injection.");
+                        Console.WriteLine("Process stuck in suspended state.");
 
                         // Create and Inject failed
                         if (!process.HasExited)
@@ -58,11 +56,7 @@ namespace NetworkAdapterSelector.Hook
                             process.WaitForExit(3000);
                         }
 
-                        processId = CreateProcess(filePath, arguments);
-
-                        Thread.Sleep(Math.Max(CommandLineOptions.Default.Delay, 1000));
-
-                        InjectProcess(networkId, processId);
+                        throw new AccessViolationException("Failed to start the application.");
                     }
 
                     return;
@@ -83,6 +77,7 @@ namespace NetworkAdapterSelector.Hook
         }
 
 
+        // ReSharper disable once TooManyDeclarations
         private static bool IsProcessStuckByInjection(Process process)
         {
             var allThreads = process.Threads.Cast<ProcessThread>().ToArray();
@@ -113,12 +108,7 @@ namespace NetworkAdapterSelector.Hook
                     lpcStuckThreads.Length == 1 &&
                     lpcStuckThreads.FirstOrDefault()?.Id == allThreads.FirstOrDefault()?.Id);
         }
-
-        private static int CreateProcess(string fileName, string arguments)
-        {
-            return Process.Start(fileName, arguments)?.Id ?? 0;
-        }
-
+        
         private static void InjectProcess(string networkId, int processId)
         {
             var injectorAddress = Assembly.GetExecutingAssembly().Location;
@@ -193,21 +183,29 @@ namespace NetworkAdapterSelector.Hook
 
                     if (CommandLineOptions.Default.Delay <= 0)
                     {
-                        CreateAndInjectProcess(
-                            networkId,
-                            CommandLineOptions.Default.Execute,
-                            CommandLineOptions.Default.Arguments?.Trim('"') ?? ""
-                        );
+                        try
+                        {
+                            CreateAndInjectProcess(
+                                networkId,
+                                CommandLineOptions.Default.Execute,
+                                CommandLineOptions.Default.Arguments?.Trim('"') ?? ""
+                            );
 
-                        Console.WriteLine("SUCCESS");
-                        Environment.Exit(0);
+                            Console.WriteLine("SUCCESS");
+                            Environment.Exit(0);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                            Console.WriteLine("Failed to start process. Fallback to delayed injection.");
+                        }
                     }
 
                     // Delayed attach
-                    processId = CreateProcess(
+                    processId = Process.Start(
                         CommandLineOptions.Default.Execute,
                         CommandLineOptions.Default.Arguments?.Trim('"') ?? ""
-                    );
+                    )?.Id ?? 0;
                 }
 
                 if (processId <= 0 || Process.GetProcesses().All(p => p.Id != processId))
@@ -215,7 +213,7 @@ namespace NetworkAdapterSelector.Hook
                     throw new ArgumentException("Invalid process id provided or failed to start the process.");
                 }
 
-                Thread.Sleep(Math.Max(CommandLineOptions.Default.Delay, 0));
+                Thread.Sleep(Math.Max(CommandLineOptions.Default.Delay, 1000));
 
                 InjectProcess(networkId, processId);
 

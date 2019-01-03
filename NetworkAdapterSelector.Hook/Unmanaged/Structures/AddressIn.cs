@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Runtime.InteropServices;
+using NetworkAdapterSelector.Hook.UnManaged.Interfaces;
 
-namespace NetworkAdapterSelector.Hook.UnManaged
+namespace NetworkAdapterSelector.Hook.UnManaged.Structures
 {
     [StructLayout(LayoutKind.Explicit, Size = 4)]
     internal struct AddressIn : IAddressIn

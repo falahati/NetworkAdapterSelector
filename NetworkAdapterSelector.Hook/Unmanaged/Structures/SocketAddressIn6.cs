@@ -1,8 +1,9 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using NetworkAdapterSelector.Hook.UnManaged.Interfaces;
 
-namespace NetworkAdapterSelector.Hook.UnManaged
+namespace NetworkAdapterSelector.Hook.UnManaged.Structures
 {
     [StructLayout(LayoutKind.Explicit, Size = 28)]
     internal struct SocketAddressIn6 : ISocketAddress

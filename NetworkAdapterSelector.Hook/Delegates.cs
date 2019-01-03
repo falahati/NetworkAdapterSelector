@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
-using NetworkAdapterSelector.Hook.UnManaged;
+using NetworkAdapterSelector.Hook.UnManaged.Structures;
 
 namespace NetworkAdapterSelector.Hook
 {
@@ -28,6 +28,21 @@ namespace NetworkAdapterSelector.Hook
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
         public delegate bool SetWindowTextDelegate(IntPtr windowHandle, IntPtr textPointer);
+        
+        [UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
+        public delegate SocketError CloseDelegate(IntPtr socket);
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
+        public delegate IntPtr OpenDelegate(AddressFamily addressFamily, SocketType type, ProtocolType protocol);
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
+        public delegate IntPtr WSAOpenDelegate(
+            AddressFamily addressFamily,
+            SocketType type,
+            ProtocolType protocol,
+            IntPtr protocolInfo,
+            int groupId,
+            short flags);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, SetLastError = true)]
         public delegate SocketError WSAConnectDelegate(
