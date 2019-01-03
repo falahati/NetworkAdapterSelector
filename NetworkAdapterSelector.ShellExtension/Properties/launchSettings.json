@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NetworkAdapterSelector.ShellExtension": {
+      "commandName": "Executable",
+      "executablePath": "%windir%\\explorer.exe"
+    }
+  }
+}

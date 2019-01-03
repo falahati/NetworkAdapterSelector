@@ -92,16 +92,24 @@ namespace NetworkAdapterSelector.ShellExtension
                     return;
                 }
 
+                var arguments = $"-n \"{networkInterfaceId}\" -e \"{SelectedItemPaths.First()}\"";
+
+#if DEBUG
+                arguments += " -d";
+#endif
+
                 // Executing the "NetworkAdapterSelector.Hook" and passing the address of executable file.
-                var processInfo = new ProcessStartInfo(
-                    executableAddress,
-                    $"-n \"{networkInterfaceId}\" -e \"{SelectedItemPaths.First()}\""
-                )
+                var processInfo = new ProcessStartInfo(executableAddress, arguments)
                 {
                     WindowStyle = ProcessWindowStyle.Hidden,
                     CreateNoWindow = true,
                     UseShellExecute = true
                 };
+
+#if DEBUG
+                processInfo.WindowStyle = ProcessWindowStyle.Normal;
+                processInfo.CreateNoWindow = false;
+#endif
 
                 if (asAdmin)
                 {

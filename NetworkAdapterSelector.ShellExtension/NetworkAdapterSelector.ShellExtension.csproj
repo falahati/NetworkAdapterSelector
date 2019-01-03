@@ -14,9 +14,13 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>NetworkAdapterSelector.ShellExtension.snk</AssemblyOriginatorKeyFile>
     <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <ApplicationIcon />
+    <StartupObject></StartupObject>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Release</OutputPath>
@@ -25,4 +29,10 @@
     <PackageReference Include="ServerRegistrationManager" Version="2.7.1" />
     <PackageReference Include="SharpShell" Version="2.7.1" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Exec Command="&quot;$(TargetPath)&quot;" />
+  </Target>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Exec Command="taskkill /IM explorer.exe /F &gt; %temp%\out.txt 2&gt;&amp;1&#xD;&#xA;exit /B 0" />
+  </Target>
 </Project>
