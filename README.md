@@ -5,6 +5,9 @@ A solution containing an Injector to hook WinSock methods and bind the new conne
 ## Download
 Download the latest version of the program from the [releases](https://github.com/falahati/NetworkAdapterSelector/releases/latest) page.
 
+## Donation
+[<img width="24" height="24" src="http://icons.iconarchive.com/icons/sonya/swarm/256/Coffee-icon.png"/>**Every coffee counts! :)**](https://www.coinpayments.net/index.php?cmd=_donate&reset=1&merchant=820707aded07845511b841f9c4c335cd&item_name=Donate&currency=USD&amountf=10.00000000&allow_amount=1&want_shipping=0&allow_extra=1)
+
 ## Command Line Parameters
 If you are not interested in using the provided shell extension, you can always use the following command line parameters directly to manipulate running applications or start a new process.
 
