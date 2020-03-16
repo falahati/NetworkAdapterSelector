@@ -33,10 +33,11 @@ namespace NetworkAdapterSelector.Hook
                         networkId,
                         injectorAddress,
                         CommandLineOptions.Default.Delay,
+                        CommandLineOptions.Default.ChangeWindowTitle,
                         CommandLineOptions.Default.Debug);
 
                     var process = Process.GetProcessById(processId);
-                    
+
                     Thread.Sleep(2000);
 
                     if (process.HasExited)
@@ -108,7 +109,7 @@ namespace NetworkAdapterSelector.Hook
                     lpcStuckThreads.Length == 1 &&
                     lpcStuckThreads.FirstOrDefault()?.Id == allThreads.FirstOrDefault()?.Id);
         }
-        
+
         private static void InjectProcess(string networkId, int processId)
         {
             var injectorAddress = Assembly.GetExecutingAssembly().Location;
@@ -126,6 +127,7 @@ namespace NetworkAdapterSelector.Hook
                         networkId,
                         injectorAddress,
                         CommandLineOptions.Default.Delay,
+                        CommandLineOptions.Default.ChangeWindowTitle,
                         CommandLineOptions.Default.Debug
                     );
 

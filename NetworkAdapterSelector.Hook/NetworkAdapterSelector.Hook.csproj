@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net462</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <Company>Soroush Falahati (falahati.net)</Company>
     <Description>A simple solution that lets the user to force bind a program to a specific network adapter</Description>
     <Authors>Soroush Falahati</Authors>

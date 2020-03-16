@@ -30,6 +30,10 @@ namespace NetworkAdapterSelector.Hook
         /// <param name="adapterId"><see cref="string" /> identification of the desired network adapter</param>
         /// <param name="injectionGuessAddress">Address of the injection assembly to be used for child processes</param>
         /// <param name="injectionDelay">Number of milliseconds after child process creation to try to inject the code</param>
+        /// <param name="changeWindowTitle">
+        ///     A boolean value indicating if the title of the main windows of the process should be
+        ///     modified
+        /// </param>
         /// <param name="isInDebug">Indicates if injected code should create a log file and print activity information</param>
         // ReSharper disable once TooManyDependencies
         public Guest(
@@ -37,6 +41,7 @@ namespace NetworkAdapterSelector.Hook
             string adapterId,
             string injectionGuessAddress,
             int injectionDelay,
+            bool changeWindowTitle,
             bool isInDebug)
         {
             DebugMessage(
@@ -44,6 +49,7 @@ namespace NetworkAdapterSelector.Hook
                 null,
                 "Initializing ..."
             );
+            ChangeWindowTitle = changeWindowTitle;
             InjectionGuessAddress = injectionGuessAddress;
             InjectionDelay = injectionDelay;
             AdapterId = adapterId;
@@ -65,6 +71,7 @@ namespace NetworkAdapterSelector.Hook
 
         private IntPtr ActiveWindow { get; set; } = IntPtr.Zero;
         private string AdapterId { get; }
+        public bool ChangeWindowTitle { get; }
         private List<LocalHook> Hooks { get; } = new List<LocalHook>();
         private int InjectionDelay { get; }
         private string InjectionGuessAddress { get; }
@@ -173,19 +180,22 @@ namespace NetworkAdapterSelector.Hook
                 )
             );
 
-            // Ansi version of the SetWindowText method
-            AddHook(@"user32.dll", @"SetWindowTextA",
-                new Delegates.SetWindowTextDelegate(
-                    (handle, text) => OnSetWindowText(handle, text, false)
-                )
-            );
+            if (ChangeWindowTitle)
+            {
+                // Ansi version of the SetWindowText method
+                AddHook(@"user32.dll", @"SetWindowTextA",
+                    new Delegates.SetWindowTextDelegate(
+                        (handle, text) => OnSetWindowText(handle, text, false)
+                    )
+                );
 
-            // Unicode (Wide) version of the SetWindowText method
-            AddHook(@"user32.dll", @"SetWindowTextW",
-                new Delegates.SetWindowTextDelegate(
-                    (handle, text) => OnSetWindowText(handle, text, true)
-                )
-            );
+                // Unicode (Wide) version of the SetWindowText method
+                AddHook(@"user32.dll", @"SetWindowTextW",
+                    new Delegates.SetWindowTextDelegate(
+                        (handle, text) => OnSetWindowText(handle, text, true)
+                    )
+                );
+            }
 
             // Return if we failed to hook any method
             lock (Hooks)
@@ -205,8 +215,11 @@ namespace NetworkAdapterSelector.Hook
             // In case we started the application using CreateAndInject method
             RemoteHooking.WakeUpProcess();
 
-            // Going into a loop to update the application's main window's title bar
-            WindowTitleCheckLoop();
+            if (ChangeWindowTitle)
+            {
+                // Going into a loop to update the application's main window's title bar
+                WindowTitleCheckLoop();
+            }
         }
 
         private void AddHook(string libName, string entryPoint, Delegate newProcedure)
@@ -337,6 +350,150 @@ namespace NetworkAdapterSelector.Hook
             return SocketError.Success;
         }
 
+        // ReSharper disable once TooManyArguments
+        private void DebugMessage(string scope, IntPtr? socket, string message, params object[] args)
+        {
+            var lastError = NativeSocket.WSAGetLastError();
+
+            try
+            {
+                var space = Math.Max(20 - scope.Length, 0);
+
+                message = string.Format(
+                    "{0:s} - #{4:D8} [`{1}`] {2}{3}",
+                    DateTime.UtcNow,
+                    scope,
+                    new string(' ', space),
+                    args?.Length > 0 ? string.Format(message, args) : message,
+                    socket?.ToInt64() ?? 0
+                );
+
+#if DEBUG
+            try
+            {
+                Debug.WriteLine(message);
+                Console.WriteLine(message);
+            }
+            catch
+            {
+                // ignored
+            }
+#endif
+
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(LogPath))
+                    {
+                        return;
+                    }
+
+                    File.AppendAllText(LogPath, message + Environment.NewLine);
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+            catch
+            {
+                // ignored
+            }
+
+            NativeSocket.WSASetLastError(lastError);
+        }
+
+        private string GenerateCaptionText()
+        {
+            var networkInterface = GetNetworkInterface();
+            var interfaceAddress = GetInterfaceAddress(networkInterface, AddressFamily.InterNetwork, true);
+
+            if (networkInterface == null || interfaceAddress == null)
+            {
+                return null;
+            }
+
+            return "[" + networkInterface.Name + " - " + interfaceAddress + "]";
+        }
+
+        // ReSharper disable once FlagArgument
+        private IPAddress GetInterfaceAddress(
+            NetworkInterface @interface,
+            AddressFamily? preferredFamily,
+            bool fallback)
+        {
+            var result = preferredFamily == null
+                ? null
+                : @interface
+                    ?.GetIPProperties()
+                    ?.UnicastAddresses
+                    ?.FirstOrDefault(information => information.Address.AddressFamily == preferredFamily.Value)
+                    ?.Address;
+
+            if (result == null && fallback)
+            {
+                return @interface
+                    ?.GetIPProperties()
+                    ?.UnicastAddresses
+                    ?.FirstOrDefault(information =>
+                        information.Address.AddressFamily == AddressFamily.InterNetwork ||
+                        information.Address.AddressFamily == AddressFamily.InterNetworkV6)
+                    ?.Address;
+            }
+
+            return result;
+        }
+
+        private NetworkInterface GetNetworkInterface()
+        {
+            return NetworkInterface.GetAllNetworkInterfaces()
+                .FirstOrDefault(
+                    @interface =>
+                        @interface.Id.Equals(AdapterId, StringComparison.CurrentCultureIgnoreCase) &&
+                        @interface.OperationalStatus == OperationalStatus.Up &&
+                        @interface.SupportsMulticast);
+        }
+
+        private ISocketAddress GetSocketAddress(IntPtr socketAddressPointer)
+        {
+            if (socketAddressPointer == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            try
+            {
+                var socketAddress =
+                    (SocketAddressBase) Marshal.PtrToStructure(socketAddressPointer, typeof(SocketAddressBase));
+
+                Type type;
+
+                switch (socketAddress.Family)
+                {
+                    case AddressFamily.InterNetwork:
+                    {
+                        type = typeof(SocketAddressIn);
+
+                        break;
+                    }
+                    case AddressFamily.InterNetworkV6:
+                    {
+                        type = typeof(SocketAddressIn6);
+
+                        break;
+                    }
+                    default:
+
+                        return null;
+                }
+
+                return (ISocketAddress) Marshal.PtrToStructure(socketAddressPointer, type);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         private bool IsInternalAddress(IntPtr socket, ISocketAddress socketAddress)
         {
             switch (socketAddress?.AddressFamily)
@@ -369,7 +526,7 @@ namespace NetworkAdapterSelector.Hook
                             return true;
                         }
                     }
-                    
+
                     break;
                 case AddressFamily.InterNetworkV6:
 
@@ -405,7 +562,51 @@ namespace NetworkAdapterSelector.Hook
             return false;
         }
 
-        private bool IsSpecialAddress(IntPtr socket,ISocketAddress socketAddress)
+        private bool IsIpInRange(IPAddress address, IPAddress lowerRange, IPAddress upperRange)
+        {
+            if (address == null)
+            {
+                return false;
+            }
+
+            var lowerBytes = lowerRange.GetAddressBytes();
+            var upperBytes = upperRange.GetAddressBytes();
+            var addressBytes = address.GetAddressBytes();
+            var lowerBoundary = true;
+            var upperBoundary = true;
+
+            for (var i = 0;
+                i < lowerBytes.Length &&
+                (lowerBoundary || upperBoundary);
+                i++)
+            {
+                if (lowerBoundary && addressBytes[i] < lowerBytes[i] ||
+                    upperBoundary && addressBytes[i] > upperBytes[i])
+                {
+                    return false;
+                }
+
+                lowerBoundary &= addressBytes[i] == lowerBytes[i];
+                upperBoundary &= addressBytes[i] == upperBytes[i];
+            }
+
+            return true;
+        }
+
+        private bool IsSocketMarkedAsBinded(IntPtr socket)
+        {
+            lock (SocketLookupTable)
+            {
+                if (SocketLookupTable.ContainsKey(socket))
+                {
+                    return SocketLookupTable[socket];
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsSpecialAddress(IntPtr socket, ISocketAddress socketAddress)
         {
             if (IsInternalAddress(socket, socketAddress))
             {
@@ -515,194 +716,6 @@ namespace NetworkAdapterSelector.Hook
 
                 {
                     return true;
-                }
-            }
-
-            return false;
-        }
-
-        // ReSharper disable once TooManyArguments
-        private void DebugMessage(string scope, IntPtr? socket, string message, params object[] args)
-        {
-            var lastError = NativeSocket.WSAGetLastError();
-
-            try
-            {
-                var space = Math.Max(20 - scope.Length, 0);
-
-                message = string.Format(
-                    "{0:s} - #{4:D8} [`{1}`] {2}{3}",
-                    DateTime.UtcNow,
-                    scope,
-                    new string(' ', space),
-                    args?.Length > 0 ? string.Format(message, args) : message,
-                    socket?.ToInt64() ?? 0
-                );
-
-#if DEBUG
-            try
-            {
-                Debug.WriteLine(message);
-                Console.WriteLine(message);
-            }
-            catch
-            {
-                // ignored
-            }
-#endif
-
-                try
-                {
-                    if (string.IsNullOrWhiteSpace(LogPath))
-                    {
-                        return;
-                    }
-
-                    File.AppendAllText(LogPath, message + Environment.NewLine);
-                }
-                catch
-                {
-                    // ignored
-                }
-            }
-            catch
-            {
-                // ignored
-            }
-
-            NativeSocket.WSASetLastError(lastError);
-        }
-
-        private string GenerateCaptionText()
-        {
-            var networkInterface = GetNetworkInterface();
-            var interfaceAddress = GetInterfaceAddress(networkInterface, AddressFamily.InterNetwork, true);
-
-            if (networkInterface == null || interfaceAddress == null)
-            {
-                return null;
-            }
-
-            return "[" + networkInterface.Name + " - " + interfaceAddress + "]";
-        }
-
-        // ReSharper disable once FlagArgument
-        private IPAddress GetInterfaceAddress(
-            NetworkInterface @interface,
-            AddressFamily? preferredFamily,
-            bool fallback)
-        {
-            var result = preferredFamily == null
-                ? null
-                : @interface
-                    ?.GetIPProperties()
-                    ?.UnicastAddresses
-                    ?.FirstOrDefault(information => information.Address.AddressFamily == preferredFamily.Value)
-                    ?.Address;
-
-            if (result == null && fallback)
-            {
-                return @interface
-                    ?.GetIPProperties()
-                    ?.UnicastAddresses
-                    ?.FirstOrDefault(information =>
-                        information.Address.AddressFamily == AddressFamily.InterNetwork ||
-                        information.Address.AddressFamily == AddressFamily.InterNetworkV6)
-                    ?.Address;
-            }
-
-            return result;
-        }
-
-        private NetworkInterface GetNetworkInterface()
-        {
-            return NetworkInterface.GetAllNetworkInterfaces()
-                .SingleOrDefault(
-                    @interface =>
-                        @interface.Id.Equals(AdapterId, StringComparison.CurrentCultureIgnoreCase) &&
-                        @interface.OperationalStatus == OperationalStatus.Up &&
-                        @interface.SupportsMulticast);
-        }
-
-        private ISocketAddress GetSocketAddress(IntPtr socketAddressPointer)
-        {
-            if (socketAddressPointer == IntPtr.Zero)
-            {
-                return null;
-            }
-
-            try
-            {
-                var socketAddress =
-                    (SocketAddressBase) Marshal.PtrToStructure(socketAddressPointer, typeof(SocketAddressBase));
-
-                Type type;
-
-                switch (socketAddress.Family)
-                {
-                    case AddressFamily.InterNetwork:
-                    {
-                        type = typeof(SocketAddressIn);
-
-                        break;
-                    }
-                    case AddressFamily.InterNetworkV6:
-                    {
-                        type = typeof(SocketAddressIn6);
-
-                        break;
-                    }
-                    default:
-
-                        return null;
-                }
-
-                return (ISocketAddress) Marshal.PtrToStructure(socketAddressPointer, type);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private bool IsIpInRange(IPAddress address, IPAddress lowerRange, IPAddress upperRange)
-        {
-            if (address == null)
-            {
-                return false;
-            }
-
-            var lowerBytes = lowerRange.GetAddressBytes();
-            var upperBytes = upperRange.GetAddressBytes();
-            var addressBytes = address.GetAddressBytes();
-            var lowerBoundary = true;
-            var upperBoundary = true;
-
-            for (var i = 0;
-                i < lowerBytes.Length &&
-                (lowerBoundary || upperBoundary);
-                i++)
-            {
-                if (lowerBoundary && addressBytes[i] < lowerBytes[i] ||
-                    upperBoundary && addressBytes[i] > upperBytes[i])
-                {
-                    return false;
-                }
-
-                lowerBoundary &= addressBytes[i] == lowerBytes[i];
-                upperBoundary &= addressBytes[i] == upperBytes[i];
-            }
-
-            return true;
-        }
-
-        private bool IsSocketMarkedAsBinded(IntPtr socket)
-        {
-            lock (SocketLookupTable)
-            {
-                if (SocketLookupTable.ContainsKey(socket))
-                {
-                    return SocketLookupTable[socket];
                 }
             }
 
@@ -1084,6 +1097,11 @@ namespace NetworkAdapterSelector.Hook
         {
             var title = unicode ? Marshal.PtrToStringUni(text) : Marshal.PtrToStringAnsi(text);
 
+            if (!ChangeWindowTitle)
+            {
+                return NativeWindow.SetWindowText(windowHandle, title);
+            }
+
             if (!string.IsNullOrEmpty(title) && windowHandle.Equals(ActiveWindow))
             {
                 DebugMessage(
@@ -1256,7 +1274,7 @@ namespace NetworkAdapterSelector.Hook
                 }
                 catch (Exception e)
                 {
-                    // Ignoring the InvalidOperationException as it happens a lot when program don't have 
+                    // Ignoring the InvalidOperationException as it happens a lot when program don't have
                     // a valid window
                     if (!(e is InvalidOperationException))
                     {
