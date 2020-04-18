@@ -6,24 +6,23 @@
 A solution containing an Injector to hook WinSock methods and bind the new connections to the specific network adapter along with a Shell Extension to simplifies the process of injecting the code into other programs.
 ![Screenshot](/screenshot.jpg?raw=true "Screenshot")
 
-## Download
+## How to get
 [![](https://img.shields.io/github/downloads/falahati/NetworkAdapterSelector/total.svg?style=flat-square)](https://github.com/falahati/NetworkAdapterSelector/releases)
 [![](https://img.shields.io/github/tag-date/falahati/NetworkAdapterSelector.svg?label=version&style=flat-square)](https://github.com/falahati/NetworkAdapterSelector/releases)
 
 Download the latest version of the program from the [releases](https://github.com/falahati/NetworkAdapterSelector/releases/latest) page.
 
-## Donation
-Donations assist development and are greatly appreciated; also always remember that [every coffee counts!](https://media.makeameme.org/created/one-simply-does-i9k8kx.jpg) :)
+## Help me fund my own Death Star
 
-[![](https://img.shields.io/badge/fiat-PayPal-8a00a3.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=WR3KK2B6TYYQ4&item_name=Donation&currency_code=USD&source=url)
 [![](https://img.shields.io/badge/crypto-CoinPayments-8a00a3.svg?style=flat-square)](https://www.coinpayments.net/index.php?cmd=_donate&reset=1&merchant=820707aded07845511b841f9c4c335cd&item_name=Donate&currency=USD&amountf=20.00000000&allow_amount=1&want_shipping=0&allow_extra=1)
 [![](https://img.shields.io/badge/shetab-ZarinPal-8a00a3.svg?style=flat-square)](https://zarinp.al/@falahati)
+[![](https://img.shields.io/badge/usd-Paypal-8a00a3.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ramin.graphix@gmail.com&lc=US&item_name=Donate&no_note=0&cn=&curency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted)
 
 **--OR--**
 
 You can always donate your time by contributing to the project or by introducing it to others.
 
-## Command Line Parameters
+## Command line parameters
 If you are not interested in using the provided shell extension, you can always use the following command line parameters directly to manipulate running applications or start a new process.
 
 - `-d` `--debug`: Debug mode creates a log file in temp directory logging all activities of the injected code. [true, false]
@@ -65,3 +64,20 @@ NetworkAdapterSelector.Hook.exe --network "{ABCDEFGH-0000-0000-0000-000000000000
 
 ## Technology
 Both parts of the solution are in pure C# using EasyHook library and SharpShell framework. It was a little experiment to see how stable is EasyHook and how SharpShell can perform in terms of performance.
+
+## License
+Copyright (C) 2017-2020 Soroush Falahati
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
