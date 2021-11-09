@@ -1,4 +1,5 @@
 # Network Adapter Selector
+**THERE IS A PROBLEM WITH UNINSTALLER NOT WORKING, PLEASE DONT DOWNLOAD THIS TOOL IF YOU ARE NOT READY TO INSTALL THIRD PARTY APPLICATION TO REMOVE IT LATER**
 [![](https://img.shields.io/github/license/falahati/NetworkAdapterSelector.svg?style=flat-square)](https://github.com/falahati/NetworkAdapterSelector/blob/master/LICENSE)
 [![](https://img.shields.io/github/commit-activity/y/falahati/NetworkAdapterSelector.svg?style=flat-square)](https://github.com/falahati/NetworkAdapterSelector/commits/master)
 [![](https://img.shields.io/github/issues/falahati/NetworkAdapterSelector.svg?style=flat-square)](https://github.com/falahati/NetworkAdapterSelector/issues)
