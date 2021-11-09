@@ -1,8 +1,9 @@
 # Network Adapter Selector
-**THERE IS A PROBLEM WITH UNINSTALLER NOT WORKING, PLEASE DONT DOWNLOAD THIS TOOL IF YOU ARE NOT READY TO INSTALL THIRD PARTY APPLICATION TO REMOVE IT LATER**
 [![](https://img.shields.io/github/license/falahati/NetworkAdapterSelector.svg?style=flat-square)](https://github.com/falahati/NetworkAdapterSelector/blob/master/LICENSE)
 [![](https://img.shields.io/github/commit-activity/y/falahati/NetworkAdapterSelector.svg?style=flat-square)](https://github.com/falahati/NetworkAdapterSelector/commits/master)
 [![](https://img.shields.io/github/issues/falahati/NetworkAdapterSelector.svg?style=flat-square)](https://github.com/falahati/NetworkAdapterSelector/issues)
+
+**THERE IS A PROBLEM WITH UNINSTALLER NOT WORKING, PLEASE DONT DOWNLOAD THIS TOOL IF YOU ARE NOT READY TO INSTALL THIRD PARTY APPLICATION TO REMOVE IT LATER**
 
 A solution containing an Injector to hook WinSock methods and bind the new connections to the specific network adapter along with a Shell Extension to simplifies the process of injecting the code into other programs.
 ![Screenshot](/screenshot.jpg?raw=true "Screenshot")
